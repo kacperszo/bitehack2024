@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Box, Checkbox, FormControl, FormControlLabel, RadioGroup, Typography} from "@mui/material";
+import {Box, Button, Checkbox, FormControl, FormControlLabel, RadioGroup, Typography, useTheme} from "@mui/material";
 
 export default function WhatAreYourAddictionForm({value, setValue}) {
     function handleChange(key, checked) {
@@ -10,73 +10,44 @@ export default function WhatAreYourAddictionForm({value, setValue}) {
         }
     }
 
-    return (
-        <Box sx={{
-            paddingTop: 2,
-            paddingBottom: 1,
-            width: "100%",
-        }}>
-            <FormControl sx={{
-                width: "100%",
-            }}>
-                <Typography id="radio-select-are-you-from-clinic">Czego dotyczy Twój problem?</Typography>
-                <RadioGroup
-                    aria-labelledby="radio-select-are-you-from-clinic"
-                    defaultValue={false}
-                    value={value}
-                    onChange={e => setValue(e.target.value)}
-                    name="radio-select-are-you-from-clinic"
-                >
-                    <Box
-                        sx={{
-                            overflowY: "scroll",
-                            overflowX: "hidden",
-                            width: "100%",
-                            height: "12rem",
-                            display: "flex",
-                            flexDirection: "column",
-                        }}
-                    >
+    const theme = useTheme()
+    const sharedBtnStyle = {
+        padding: 2, marginTop: 2, width: "100%", display: "block",
+    }
+    const selectedBtnStyle = {
+        backgroundColor: theme.palette.primary.dark,
+    }
+    const notSelectedBtnStyle = {
+        color: theme.palette.primary.dark, borderColor: theme.palette.primary.dark,
+        // borderWidth: "2px" will break hover effect
+    }
+    const addictions = ["Alkohol", "Kofeina", "Papierosy", "Seks", "Narkotyki", "Jedzenie", "Zakupy"];
+    return (<Box sx={{
+        paddingBottom: 1, width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
 
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Alkohol", e.target.checked)}/>} label="Alkohol"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Narkotyki", e.target.checked)}/>} label="Narkotyki"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Papierosy", e.target.checked)}/>} label="Papierosy"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}}
-                                          control={<Checkbox onChange={e => handleChange("Hazard", e.target.checked)}/>}
-                                          label="Hazard"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Jedzenie", e.target.checked)}/>} label="Jedzenie"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Internet", e.target.checked)}/>} label="Internet"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Kofeina", e.target.checked)}/>} label="Kofeina"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}}
-                                          control={<Checkbox onChange={e => handleChange("Praca", e.target.checked)}/>}
-                                          label="Praca"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}}
-                                          control={<Checkbox onChange={e => handleChange("Zakupy", e.target.checked)}/>}
-                                          label="Zakupy"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Gry komputerowe", e.target.checked)}/>}
-                                          label="Gry komputerowe"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}}
-                                          control={<Checkbox onChange={e => handleChange("Seks", e.target.checked)}/>}
-                                          label="Seks"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Telefon komórkowy", e.target.checked)}/>}
-                                          label="Telefon komórkowy"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}} control={<Checkbox
-                            onChange={e => handleChange("Mediów społecznościowych", e.target.checked)}/>}
-                                          label="Mediów społecznościowych"/>
-                        <FormControlLabel sx={{width: "100%", display: "block"}}
-                                          control={<Checkbox onChange={e => handleChange("inne", e.target.checked)}/>}
-                                          label="inne"/>
-                    </Box>
-                </RadioGroup>
-            </FormControl>
+    }}>
+        <Box>
+            <Typography textAlign={"center"} sx={{display: "block", p: 3}} fontWeight={600} variant={"h4"}>Czy trafiłeś
+                tutaj z
+                kilniki?</Typography>
+            <Typography sx={{display: "block", p: 3}} textAlign={"center"} variant={"subheader"}>Ta informacja
+                usprawni
+                process
+                rejestracji</Typography>
         </Box>
-    );
+        <Box sx={{width: "100%", maxWidth: 400, height: 300, overflowY: "auto"}}>
+            {
+                addictions.map(addiction => (
+                    <Button fullWidth variant={value.includes(addiction) ? "contained" : "outlined"}
+                            onClick={() => handleChange(addiction, !value.includes(addiction))}
+                            sx={value.includes(addiction) ? ({...sharedBtnStyle, ...selectedBtnStyle}) : ({...sharedBtnStyle, ...notSelectedBtnStyle})}
+                    >{addiction}</Button>
+                ))
+            }
+
+        </Box>
+    </Box>)
 }
