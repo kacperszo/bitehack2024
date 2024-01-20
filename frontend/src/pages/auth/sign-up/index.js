@@ -98,7 +98,7 @@ export default function SignUp() {
                     marginTop: 3, backgroundColor: theme.palette.primary.dark, width: "12rem",
                 }} onClick={onNext} variant={"contained"}>Dalej</Button>
                 <Button sx={{
-                    marginTop: 3,
+                    marginTop: 0.5,
                     color: theme.palette.primary.dark,
                     borderColor: theme.palette.primary.dark,
                     width: "12rem",

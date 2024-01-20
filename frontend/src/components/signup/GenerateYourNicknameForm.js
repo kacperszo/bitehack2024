@@ -36,9 +36,10 @@ export default function GenerateYourNicknameForm({value, setValue}) {
             width: "100%"
         }}>
             <Box>
-                <Typography textAlign={"center"} sx={{display: "block", p: 3}} fontWeight={600} variant={"h4"}>Utwórz
+                <Typography textAlign={"center"} sx={{display: "block", p: 3, pb: 0}} fontWeight={600} variant={"h4"}>Utwórz
                     konto</Typography>
-                <Typography sx={{display: "block", p: 2}} textAlign={"center"} variant={"subheader"}>Twój adress email
+                <Typography sx={{display: "block", p: 2, pt: 1}} textAlign={"center"} variant={"subheader"}>Twój adress
+                    email
                     jest nam potrzebny do utworzenia konta. Chcemy abyś był w pełni anonimowy - wygeneruj swój
                     nickname</Typography>
             </Box>
@@ -54,6 +55,8 @@ export default function GenerateYourNicknameForm({value, setValue}) {
                                </IconButton>
                            </InputAdornment>,
                        }}/>
+            <Typography sx={{textDecoration: "underline", textAlign: "center", width: "100%", mt:1}}>Kliknij w kostkę aby
+                wygenerować </Typography>
             <TextField sx={{marginTop: 2}}
                        fullWidth
                        type="email"
