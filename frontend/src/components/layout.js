@@ -1,21 +1,7 @@
-import {
-    AppBar,
-    Box,
-    Button,
-    Drawer,
-    IconButton,
-    Menu,
-    MenuItem,
-    Stack,
-    Toolbar,
-    Typography, useTheme
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import {Box, MenuItem, useTheme} from "@mui/material";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
-import {Icon} from "@iconify/react";
 import Image from "next/image";
-import Navbar from "@/components/navbar";
 
 const isActive = (href) => {
     const router = useRouter();
@@ -32,7 +18,13 @@ const isActive = (href) => {
 }
 
 export default function Layout({children}) {
+    const router = useRouter();
+
     const theme = useTheme();
+
+    const handleMenuItemClick = (href) => {
+        router.push(href);
+    }
 
     const menuItems = [
         {path: "/knowledge-base", label: "Baza pomocy i wiedzy", icon: ""},
