@@ -1,45 +1,43 @@
-import {Box, Grid, Stack, Tab, Tabs, Typography} from "@mui/material";
+import {Box, Grid, Stack, Tab, Tabs, Typography, useTheme} from "@mui/material";
 import Navbar from "@/components/navbar";
 import KnowledgeTab from "@/components/knowledgeBase/knowledgeTab";
 import {useState} from "react";
+import * as React from "react";
 
 export default function KnowledgeBasePage() {
-    const [value, setValue] = useState(0);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    const theme = useTheme();
 
     return (
         <>
+            <Hero>
+                <Typography sx={{marginTop: "1rem", display: "block"}} color={theme.palette.primary.dark}
+                            variant={"h3"}>Zmień
+                    swoje życie i</Typography>
+                <Typography sx={{marginTop: "1rem", display: "block"}} color={theme.palette.primary.dark}
+                            variant={"h5"}>zacznij
+                    żyć odNowa</Typography>
+            </Hero>
+
+        </>
+    )
+}
+
+const Hero = ({children}) => {
+    return (
+        <>
             <Navbar/>
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                }}
-            >
-                <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Item One" id={`simple-tab-${0}`}/>
-                        <Tab label="Item Two" id={`simple-tab-${1}`}/>
-                        <Tab label="Item Three" id={`simple-tab-${2}`}/>
-                    </Tabs>
-                </Box>
-                <KnowledgeTab value={value} index={0}>
-                    item one
-                </KnowledgeTab>
-                <KnowledgeTab value={value} index={1}>
-                    item one
-                </KnowledgeTab>
-                <KnowledgeTab value={value} index={2}>
-                    item one
-                </KnowledgeTab>
+            <Box sx={{
+                pt: 10,
+                pb: 10,
+                display: "flex",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+            }}>
+                {children}
             </Box>
         </>
-    );
+    )
 }

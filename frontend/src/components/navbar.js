@@ -76,7 +76,7 @@ export default function Navbar() {
             <MenuItem onClick={() => handleMenuItemClick('/app')}>
                 <p>Kokpit</p>
             </MenuItem>
-            <MenuItem onClick={() => handleMenuItemClick('/app/knowledgeBase')}>
+            <MenuItem onClick={() => handleMenuItemClick('/app/knowledge-base')}>
                 <p style={{
                     ...(isActive('app/knowledgeBase') && {fontWeight: 'bold'})
                 }}>Baza pomocy i wiedzy</p>
@@ -130,7 +130,7 @@ export default function Navbar() {
                     <Button color="inherit" onClick={() => handleMenuItemClick('/app')}>Kokpit</Button>
                     <Button sx={{
                         ...(isActive('app/knowledgeBase') && {textDecoration: 'underline'})
-                    }} color="inherit" onClick={() => handleMenuItemClick('/app/knowledgeBase')}>Baza pomocy i
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/knowledge-base')}>Baza pomocy i
                         wiedzy</Button>
                     <Button sx={{
                         ...(isActive('app/journal') && {textDecoration: 'underline'})
