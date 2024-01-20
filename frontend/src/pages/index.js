@@ -1,11 +1,11 @@
-import {Button, Container, Stack, Typography} from "@mui/material";
+import {Box, Button, Stack, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 
 export default function Home() {
   const router = useRouter();
 
   return (
-    <Container
+    <Box
       sx={{
         height: '100vh',
         display: 'flex',
@@ -14,7 +14,8 @@ export default function Home() {
         alignItems: 'center',
         backgroundImage: 'url(gradient-bg.svg)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        maxWidth: '100%'
       }}
     >
       <Typography variant="h2" align="center">
@@ -32,6 +33,6 @@ export default function Home() {
           Zarejestruj się
         </Button>
       </Stack>
-    </Container>
+    </Box>
   );
 }

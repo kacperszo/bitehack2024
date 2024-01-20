@@ -16,7 +16,7 @@ module.exports = {
       }
     }
 
-    const authGuard = async (withMfa = true, withPasswordChange = true) => {
+    const authGuard = async () => {
       if (!user) {
         throw new GraphQLError('Unauthenticated.', {
           extensions: {
