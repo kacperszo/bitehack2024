@@ -1,6 +1,6 @@
 import AreYouFromClinicForm from "@/components/signup/AreYouFromClinicForm";
 import "@/styles/pages/auth/sign-up.module.scss";
-import {Box, Button, Typography} from "@mui/material";
+import {Box, Button, Typography, useTheme} from "@mui/material";
 import {useState} from "react";
 import ClinicCodeForm from "@/components/signup/ClinicCodeForm";
 import IsItYourProblemForm from "@/components/signup/IsItYourProblemForm";
@@ -20,12 +20,15 @@ export default function SignUp() {
     const onPrev = () => {
         setCurrentStep(step => step - 1);
     }
+
+    const theme = useTheme();
+
     return (
         <Box sx={{
             width: "100vw",
             height: "100vh",
             overflowX: "hidden",
-            backgroundColor: "#86E9B1",
+            backgroundColor: theme.palette.primary.light,
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
