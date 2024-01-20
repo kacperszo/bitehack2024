@@ -1,61 +1,123 @@
-import {Box, Button, Card, CardContent, Grid, Stack, Typography} from "@mui/material";
+import {Box, Button, Card, CardContent, Grid, Stack, Typography, useTheme} from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
+import {useEffect} from "react";
 
-export default function FeelingJournal() {
-  return (
-    <>
-      <Navbar/>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <Stack sx={{mt: 4, px: 5}} textAlign="left">
-          <Stack direction="row">
-            <Box flexGrow={1}>
-              <Typography variant="h4">
-                SOS! Potrzebuję nagłej pomocy.
-              </Typography>
-            </Box>
-          </Stack>
+const InfoCard = ({children}) => {
+    const theme = useTheme();
 
-          <Grid container justifyContent="center" alignItems="center" sx={{mt: 4}}>
-            <Grid item xs={12} md={3} justifyContent="center" alignItems="center" textAlign="center">
-              <Image src={"/soscat.png"} alt={"cat"} width={300} height={300}/>
-            </Grid>
-            <Grid item xs={12} md={8}>
-              <Stack direction="row" justifyContent="center" alignItems="center" spacing={2}>
-                <Button variant="contained">Połączenie ze specjalistą</Button>
-                <Button variant="contained">Czat ze specjalistą</Button>
-              </Stack>
-              <Card sx={{mt: 2}}>
-                <CardContent>
-                  <Typography variant="h5">
-                    Najważniejszy jest oddech. Nie jesteś tutaj sam!
-                  </Typography>
-                  <Typography variant="body2" sx={{mt: 1}}>
-                    Po pierwsze, weź 3 głębokie oddechy. Poczuj powietrze w swoich płucach. Skup się na oddychaniu.
-                  </Typography>
-                  <Typography variant="body2" sx={{mt: 1}}>
-                    Po drugie, skontaktuj się z naszym specjalistą pod numerem +48 123-123-123.
-                  </Typography>
-                  <Typography variant="body2" sx={{mt: 1}}>
-                    Pamiętaj, że jeżeli jesteś w sytuacji zagrażającej życiu, pilnie skontaktuj się ze służbami
-                    medycznymi pod numerem 112.
-                    <br/>
-                    Podaj niezbędne informacje: imię i nazwisko, miejsce gdzie teraz przebywasz oraz opisz dokładnie co
-                    się dzieje.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-        </Stack>
-      </Box>
-    </>
-  );
+    return (
+        <Box sx={{
+            backgroundColor: "#EFFDF3",
+            padding: 1.5,
+            margin: 3,
+            borderRadius: 2,
+        }}>
+            {children}
+        </Box>
+    )
+}
+export default function Sos() {
+    const theme = useTheme();
+    useEffect(() => {
+        if (document?.body) {
+            document.body.style.backgroundColor = theme.palette.primary.light;
+        }
+    }, [theme]);
+    return (
+        <>
+            <Navbar/>
+            <Stack direction={"column"}>
+                <InfoCard>
+                    <Box>
+                        <Typography fontWeight={600} variant={"h6"}><
+                            Image
+                            style={{paddingLeft: 10, paddingRight: 10,}}
+                            src={"/icons/Warning.svg"} width={30} height={30}
+                            alt={""}/>
+                            SOS! Potrzebuję nagłej pomocy
+                        </Typography>
+                    </Box>
+                </InfoCard>
+                <InfoCard>
+                    <Box sx={{px: 2}}>
+
+                        <Typography fontWeight={600} sx={{py: 3}} variant={"h6"} textAlign={"center"}>Telefon na numer
+                            alarmowy</Typography>
+                        <Typography>
+                            Jeżeli czujesz się bardzo źle lub jesteś w sytuacji zagrażającej życiu, nie czekaj
+                            skorzystaj z
+                            numeru alarmowego.
+                            Oto niezbędne informacje które musisz podać:
+                            <ul>
+                                <li>Imię i nazwisko</li>
+                                <li>Miejsce w którym przebywasz</li>
+                                <li>Opisz co dokładnie się dzieje</li>
+                            </ul>
+                        </Typography>
+                        <Box sx={{
+                            textAlign: "center",
+                            py: 3
+                        }}>
+                            <Image src={"/undraw_night_calls.png"} width={150} height={150} alt={""}/><br/>
+                            <Button sx={{mt: 3, borderRadius: "10px", px: 3, py: 1}}
+                                    variant={"contained"}>Zadzwoń</Button>
+                        </Box>
+                    </Box>
+                </InfoCard>                <InfoCard>
+                    <Box sx={{px: 2}}>
+
+                        <Typography fontWeight={600} sx={{py: 3}} variant={"h6"} textAlign={"center"}>Telefon na numer
+                            alarmowy</Typography>
+                        <Typography>
+                            Jeżeli czujesz się bardzo źle lub jesteś w sytuacji zagrażającej życiu, nie czekaj
+                            skorzystaj z
+                            numeru alarmowego.
+                            Oto niezbędne informacje które musisz podać:
+                            <ul>
+                                <li>Imię i nazwisko</li>
+                                <li>Miejsce w którym przebywasz</li>
+                                <li>Opisz co dokładnie się dzieje</li>
+                            </ul>
+                        </Typography>
+                        <Box sx={{
+                            textAlign: "center",
+                            py: 3
+                        }}>
+                            <Image src={"/undraw_night_calls.png"} width={150} height={150} alt={""}/><br/>
+                            <Button sx={{mt: 3, borderRadius: "10px", px: 3, py: 1}}
+                                    variant={"contained"}>Zadzwoń</Button>
+                        </Box>
+                    </Box>
+                </InfoCard> <InfoCard>
+                <Box sx={{px: 2}}>
+
+                    <Typography fontWeight={600} sx={{py: 3}} variant={"h6"} textAlign={"center"}>Telefon na numer
+                        alarmowy</Typography>
+                    <Typography>
+                        Jeżeli czujesz się bardzo źle lub jesteś w sytuacji zagrażającej życiu, nie czekaj
+                        skorzystaj z
+                        numeru alarmowego.
+                        Oto niezbędne informacje które musisz podać:
+                        <ul>
+                            <li>Imię i nazwisko</li>
+                            <li>Miejsce w którym przebywasz</li>
+                            <li>Opisz co dokładnie się dzieje</li>
+                        </ul>
+                    </Typography>
+                    <Box sx={{
+                        textAlign: "center",
+                        py: 3
+                    }}>
+                        <Image src={"/undraw_night_calls.png"} width={150} height={150} alt={""}/><br/>
+                        <Button sx={{mt: 3, borderRadius: "10px", px: 3, py: 1}}
+                                variant={"contained"}>Zadzwoń</Button>
+                    </Box>
+                </Box>
+            </InfoCard>
+
+            </Stack>
+        </>
+    )
+        ;
 }
