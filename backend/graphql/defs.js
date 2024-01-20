@@ -12,6 +12,12 @@ module.exports = gql`
         total: Int!
     }
 
+    input PaginatedQueryInput {
+        page: Int!
+        limit: Int!
+        orderBy: OrderBy!
+    }
+
     input OrderBy {
         order: String!
         orderBy: String!
@@ -22,27 +28,10 @@ module.exports = gql`
         email: String!
         password: String!
         displayName: String!
-        phone: String
-        photoUrl: String
-        lang: String!
-        clientId: ID
-        emailVerifiedAt: DateTime
-        requiredPasswordChange: Boolean
         createdAt: DateTime
         updatedAt: DateTime
 
-        otpEnabled: Boolean
-        otpBase32: String
-        otpAuthUrl: String
-
-        currentPlan: CurrentPlan
-
-        roles: [Role]
-        client: Client
-        emailVerifications: [EmailVerification]
         authTokens: [UserAuthTokens]
-        permissions: [Permission]
-        subscriptions: [Subscription]
     }
 
     type UserPagination {
@@ -55,7 +44,6 @@ module.exports = gql`
         userId: ID!
         accessToken: String!
         refreshToken: String!
-        mfaVerified: Boolean
         device: String!
         ipAddress: String!
         lastActive: DateTime!
@@ -70,29 +58,26 @@ module.exports = gql`
         data: [UserAuthTokens]!
     }
 
-    type DiscountCodePagination {
-        paginator: Paginator!
-
     type Query {
         users(input: PaginatedQueryInput!, filterBy: String): UserPagination
-        user(id: ID): User    }
+        user(id: ID): User
+    }
 
     type Mutation {
-        signIn(input: SignInInput!): User!
-        signUp(input: SignUpInput!): User!
-        signOut: String!
-        changeEmail(newEmail: String!): EmailVerification!
-        cancelEmailChange: String!
-        resendRegisterEmailVerification(email: String!): EmailVerification!
-        changePassword(password: String!, newPassword: String!): User!
-        forgotPassword(email: String!): String!
-        resetPassword(code: String!, password: String!, confirmPassword: String!): String!
-        
-        createUser(input: UserInput!): User!
-        updateUser(input: UpdateUserInput!): User!
-        deleteUser(id: ID!): String!
-        deleteUserAuthToken(userId: ID!, id: ID!): User!
-        updateUserPermissions(id: ID!, newPermissions: String!): User!
+        #signIn(input: SignInInput!): User!
+        #signUp(input: SignUpInput!): User!
+        #signOut: String!
+        #changeEmail(newEmail: String!): EmailVerification!
+        #cancelEmailChange: String!
+        #resendRegisterEmailVerification(email: String!): EmailVerification!
+        #changePassword(password: String!, newPassword: String!): User!
+        #forgotPassword(email: String!): String!
+        #resetPassword(code: String!, password: String!, confirmPassword: String!): String!
+
+        #reateUser(input: UserInput!): User!
+        #updateUser(input: UpdateUserInput!): User!
+        #deleteUser(id: ID!): String!
+        #deleteUserAuthToken(userId: ID!, id: ID!): User!
     }
 
 `;
