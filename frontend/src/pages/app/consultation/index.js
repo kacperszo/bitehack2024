@@ -70,7 +70,7 @@ export default function Consultation() {
             </Box>
           </Stack>
 
-          <Grid container justifyContent="center" sx={{mt: 4, pb: 4}} spacing={2}>
+          <Grid container justifyContent="center" sx={{mt: 4, pb: 5}} spacing={2}>
             <Grid item xs={12} md={4}>
               <Card sx={{position: 'relative'}}>
                 <CardContent>

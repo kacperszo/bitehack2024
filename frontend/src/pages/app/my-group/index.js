@@ -1,34 +1,64 @@
 import Navbar from "@/components/navbar";
 import UserTile from "@/components/mygroup/userTile";
-import {Box} from "@mui/material";
+import {Box, Card, CardContent, Stack, Typography} from "@mui/material";
 import Chat from "@/components/mygroup/Chat";
 
 export default function MyGroupPage({group}) {
     const {name, users} = group
 
     return (
-        <>
-            <Navbar/>
-            <Box sx={{
-                display: 'flex',
-                gap: 2,
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-                paddingTop: 2,
-                paddingBottom: 1,
-            }}>
-                {users.map((user, index) => {
+      <>
+        <Navbar/>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            backgroundImage: 'url(/gradient-bg.svg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          <Stack sx={{mt: 4, px: 5}} textAlign="left">
+            <Stack direction="row">
+              <Box flexGrow={1}>
+                <Typography variant="h4">
+                  Moja grupa do wzajemnego wsparcia
+                </Typography>
+                <Typography variant="body2">
+                  Porozmawiaj z osobami, które mogą zmagać się z tym samym problemem.
+                  <br/>
+                  System automatycznie przypisuje do Twojej grupy osoby, które zmagają się z tym samym uzależnieniem.
+                  <br/>
+                  W czacie obecny jest nasz specjalista, który na bieżąco monitoruje waszą sytuację.
+                </Typography>
+              </Box>
+            </Stack>
+            <Card sx={{mt: 4, mb: 10}}>
+              <CardContent>
+                <Box sx={{
+                  display: 'flex',
+                  gap: 2,
+                  alignItems: 'flex-start',
+                  justifyContent: 'center',
+                  paddingTop: 1,
+                  paddingBottom: 1,
+                }}>
+                  {users.map((user, index) => {
                     return (
-                        <UserTile key={index} user={user}/>
+                      <UserTile key={index} user={user}/>
                     )
-                })}
-            </Box>
-            <Box sx={{
-                paddingTop: 2,
-                paddingBottom: 1
-            }}>
-                <Chat />
-            </Box>
+                  })}
+                </Box>
+                <Box sx={{
+                  paddingTop: 2,
+                  paddingBottom: 1
+                }}>
+                  <Chat/>
+                </Box>
+              </CardContent>
+            </Card>
+          </Stack>
+        </Box>
         </>
     )
 }
