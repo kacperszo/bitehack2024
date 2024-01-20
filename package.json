@@ -3,7 +3,8 @@
   "version": "1.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "sass": "^1.70.0"
   },
   "scripts": {
     "install": "concurrently \"yarn run install-frontend\" \"yarn run install-backend\"",
