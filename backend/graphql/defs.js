@@ -45,6 +45,17 @@ module.exports = gql`
 
         user: User
     }
+    
+    type HelpArticle {
+        id: ID!
+        title: String!
+        content: String!
+        author: String!
+        createdAt: DateTime
+        updatedAt: DateTime
+
+        user: User
+    }
 
     type UserPagination {
         paginator: Paginator!
