@@ -5,11 +5,11 @@ module.exports = {
   production: {
     client: 'mysql2',
     connection: {
-      host: '',
-      port: '',
-      database: '',
-      user: '',
-      password: ''
+      host: '46.41.137.139',
+      port: '3306',
+      database: 'bitehack2024',
+      user: 'bitehack2024',
+      password: '8h70jG6^b'
     },
     pool: {
       min: 2,
@@ -27,11 +27,11 @@ module.exports = {
   development: {
     client: 'mysql2',
     connection: {
-      host: '',
-      port: '',
-      database: '',
-      user: '',
-      password: ''
+      host: '46.41.137.139',
+      port: '3306',
+      database: 'bitehack2024',
+      user: 'bitehack2024',
+      password: '8h70jG6^b'
     },
     pool: {
       min: 2,
