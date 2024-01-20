@@ -67,7 +67,8 @@ export default function Layout({children}) {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        width: '100%'
                     }}>
                         {menuItems.map((item, index) => {
                             const {path, label, icon} = item
