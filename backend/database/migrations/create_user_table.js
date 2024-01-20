@@ -6,8 +6,8 @@ exports.up = async function (knex) {
     await knex.schema.createTable('users', table => {
         table.charset('utf8mb4');
         table.increments('id');
-        table.string('email').notNullable();
-        table.string('displayName').notNullable();
+        table.text('email').notNullable();
+        table.text('displayName').notNullable();
         table.text('password').notNullable();
         table.text('type').notNullable();
         table.datetime('createdAt');
