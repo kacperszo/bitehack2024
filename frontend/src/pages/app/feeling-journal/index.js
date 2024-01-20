@@ -225,7 +225,7 @@ export default function FeelingJournal() {
           </Stack>
 
 
-          <Card sx={{mt: 4}}>
+          <Card sx={{mt: 4, mb: 5}}>
             <CardContent>
               <FullCalendar
                 plugins={[dayGridPlugin]}

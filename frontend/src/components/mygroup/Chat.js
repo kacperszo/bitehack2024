@@ -1,32 +1,24 @@
 import * as React from "react";
-import {
-    Box,
-    TextField,
-    Button,
-    Typography,
-    Avatar,
-    Grid,
-    Paper,
-} from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
 import {useState} from "react";
+import {Avatar, Box, Button, Grid, Paper, TextField, Typography,} from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 export default function Chat() {
-    const [input, setInput] = React.useState("");
+  const [input, setInput] = React.useState("");
 
-    const [messages, setMessages] = useState([
-        {
-            text: "Hi there!",
-            sender: {id: 1, email: 'user1@example.com', displayName: 'Sprytny Wilk', type: 'addict', color: 'red'}
-        },
-        {
-            text: "Hello!",
-            sender: {id: 2, email: 'user2@example.com', displayName: 'Dzielny Dzik', type: 'addict', color: 'green'}
-        },
-        {
-            text: "How can I assist you today?",
-            sender: {id: 3, email: 'user3@example.com', displayName: 'Mądra Zebra', type: 'addict', color: 'blue'}
-        },
+  const [messages, setMessages] = useState([
+    {
+      text: "Jak sie dzisiaj czujecie?",
+      sender: {id: 1, email: 'user1@example.com', displayName: 'Sprytny Wilk', type: 'addict', color: 'red'}
+    },
+    {
+      text: "Jest okej, a u Ciebie?",
+      sender: {id: 2, email: 'user2@example.com', displayName: 'Dzielny Dzik', type: 'addict', color: 'green'}
+    },
+    {
+      text: "U mnie też jest okej. Ciągnie mnie strasznie do złego. Co robicie gdy macie w głowie czarne myśli?",
+      sender: {id: 3, email: 'user3@example.com', displayName: 'Mądra Zebra', type: 'addict', color: 'blue'}
+    },
     ])
 
     const handleSend = () => {
@@ -59,17 +51,17 @@ export default function Chat() {
                 ))}
             </Box>
             <Box sx={{p: 2, backgroundColor: "background.default"}}>
-                <Grid container spacing={2}>
-                    <Grid item xs={10}>
-                        <TextField
-                            size="small"
-                            fullWidth
-                            placeholder="Type a message"
-                            variant="outlined"
-                            value={input}
-                            onChange={handleInputChange}
-                        />
-                    </Grid>
+              <Grid container spacing={1}>
+                <Grid item xs={10}>
+                  <TextField
+                    size="small"
+                    fullWidth
+                    placeholder="Wpisz wiadomość"
+                    variant="outlined"
+                    value={input}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
                     <Grid item xs={2}>
                         <Button
                             fullWidth
@@ -78,7 +70,7 @@ export default function Chat() {
                             endIcon={<SendIcon/>}
                             onClick={handleSend}
                         >
-                            Send
+                          Wyślij
                         </Button>
                     </Grid>
                 </Grid>

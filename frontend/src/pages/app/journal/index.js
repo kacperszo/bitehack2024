@@ -6,7 +6,6 @@ import plLocale from '@fullcalendar/core/locales/pl';
 
 import DangerousIcon from '@mui/icons-material/Dangerous';
 import {useState} from "react";
-import {matchWellbeingIcon} from "@/pages/app/feeling-journal";
 
 export const getIcon = () => {
     const iconStyle = {
@@ -24,7 +23,6 @@ export default function Journal() {
             howMuch: "1 cup",
         },
         {
-            title: 'bad',
             title: "Piwo",
             howMuch: "1 cup",
             start: new Date('2024-01-10'),
@@ -135,16 +133,16 @@ export default function Journal() {
                     </Stack>
 
 
-                    <Card sx={{mt: 4}}>
+                    <Card sx={{mt: 4, mb: 5}}>
                         <CardContent>
                             <FullCalendar
-                                plugins={[dayGridPlugin]}
-                                initialView='dayGridMonth'
-                                weekends={true}
-                                events={events}
-                                eventContent={renderEventContent}
-                                locale={plLocale}
-                                eventClick={handleEventClick}
+                              plugins={[dayGridPlugin]}
+                              initialView='dayGridMonth'
+                              weekends={true}
+                              events={events}
+                              eventContent={renderEventContent}
+                              locale={plLocale}
+                              eventClick={handleEventClick}
                             />
                         </CardContent>
                     </Card>
