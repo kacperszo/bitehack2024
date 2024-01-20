@@ -23,7 +23,6 @@ export default function IsItYourProblemForm({value, setValue}) {
     }
     const notSelectedBtnStyle = {
         color: theme.palette.primary.dark, borderColor: theme.palette.primary.dark,
-        // borderWidth: "2px" will break hover effect
     }
 
     return (<Box sx={{

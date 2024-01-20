@@ -30,13 +30,10 @@ export default function WhatAreYourAddictionForm({value, setValue}) {
 
     }}>
         <Box>
-            <Typography textAlign={"center"} sx={{display: "block", p: 3}} fontWeight={600} variant={"h4"}>Czy trafiłeś
-                tutaj z
-                kilniki?</Typography>
-            <Typography sx={{display: "block", p: 3}} textAlign={"center"} variant={"subheader"}>Ta informacja
-                usprawni
-                process
-                rejestracji</Typography>
+            <Typography textAlign={"center"} sx={{display: "block", p: 3, pb: 0}} fontWeight={600} variant={"h4"}>Powiedz
+                nam z czym masz problem</Typography>
+            <Typography sx={{display: "block", p: 3, pt: 1}} textAlign={"center"} variant={"subheader"}>Opowiedz, z
+                którymi uzależnieniami się borykasz a my postaramy się ci pomóc</Typography>
         </Box>
         <Box sx={{width: "100%", maxWidth: 400, height: 300, overflowY: "auto"}}>
             {
