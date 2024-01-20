@@ -5,6 +5,7 @@ import {useState} from "react";
 import ClinicCodeForm from "@/components/signup/ClinicCodeForm";
 import IsItYourProblemForm from "@/components/signup/IsItYourProblemForm";
 import WhatAreYourAddictionForm from "@/components/signup/WhatAreYourAddictionForm";
+import GenerateYourNicknameForm from "@/components/signup/GenerateYourNicknameForm";
 
 export default function SignUp() {
     const [currentStep, setCurrentStep] = useState(0);
@@ -51,6 +52,8 @@ export default function SignUp() {
                     <IsItYourProblemForm value={isItYourProblem} setValue={(v) => setIsItYourProblem(v)}/>)}
                 {currentStep === 2 && !isFromClinic && (
                     <WhatAreYourAddictionForm value={addictions} setValue={(v) => setAddictions(v)}/>)}
+                {currentStep === 3 && !isFromClinic && (
+                    <GenerateYourNicknameForm value={addictions} setValue={(v) => setAddictions(v)}/>)}
                 <Box sx={{display: "flex"}}>
                     <Button sx={{marginTop: 3}} disabled={currentStep === 0} onClick={onPrev}
                             variant={"outlined"}>Wstecz</Button>
