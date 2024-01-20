@@ -66,7 +66,7 @@ module.exports = gql`
     type Mutation {
         #signIn(input: SignInInput!): User!
         #signUp(input: SignUpInput!): User!
-        #signOut: String!
+        signOut: String!
         #changeEmail(newEmail: String!): EmailVerification!
         #cancelEmailChange: String!
         #resendRegisterEmailVerification(email: String!): EmailVerification!

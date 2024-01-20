@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 const UserAuthTokens = require("./models/UserAuthTokens");
 const requestIp = require("request-ip");
-const utils = require("../utils");
+const utils = require("./utils");
 const moment = require("moment");
 
 const generateTokens = async (req, res, user, authTokens = null, onlyAccessToken = false) => {
