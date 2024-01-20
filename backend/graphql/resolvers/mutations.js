@@ -1,5 +1,6 @@
 module.exports = {
   Mutation: {
-    // ...require('./mutations/globalCredentials'),
+    ...require('./mutations/auth'),
+    ...require('./mutations/users'),
   },
 }
