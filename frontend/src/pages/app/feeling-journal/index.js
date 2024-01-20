@@ -12,9 +12,9 @@ import {
   Typography
 } from "@mui/material";
 import Navbar from "@/components/navbar";
-import dayGridPlugin from '@fullcalendar/daygrid'
-import FullCalendar from "@fullcalendar/react";
-import plLocale from '@fullcalendar/core/locales/pl';
+// import dayGridPlugin from '@fullcalendar/daygrid'
+// import FullCalendar from "@fullcalendar/react";
+// import plLocale from '@fullcalendar/core/locales/pl';
 
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
