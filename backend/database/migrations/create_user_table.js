@@ -10,6 +10,7 @@ exports.up = async function (knex) {
         table.text('displayName').notNullable();
         table.text('password').notNullable();
         table.text('type').notNullable();
+        table.integer('groupId').unsigned().references('userGroups.id')
         table.datetime('createdAt');
         table.datetime('updatedAt');
     });

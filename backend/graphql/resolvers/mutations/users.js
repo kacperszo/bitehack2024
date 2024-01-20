@@ -1,6 +1,7 @@
 const User = require("../../../models/User");
 const {UserAuthTokens} = require("../types");
 const utils = require("../../../utils");
+const UsersGroup = require("../../../models/UsersGroup");
 
 module.exports = {
     createUser: async (_, { input }, context) => {
@@ -36,6 +37,30 @@ module.exports = {
             await authToken.$query().delete();
 
             return user;
+        } catch (error) {
+            utils.throwGraphqlError(error);
+        }
+    },
+
+    addUserToGroup: async (_, { id, groupId }, context) => {
+        await context.authGuard();
+
+        try {
+            const user = await User.query().findById(id);
+
+            if (!user) {
+                throw new Error('User Not found.');
+            }
+
+            const group = await UsersGroup.query().findById(groupId);
+
+            if (!group) {
+                throw new Error('Group Not found.');
+            }
+
+            return await user.$query().patchAndFetch({
+                groupId
+            })
         } catch (error) {
             utils.throwGraphqlError(error);
         }
