@@ -14,6 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {Icon} from "@iconify/react";
+import Image from "next/image";
 
 const isActive = (href) => {
     const router = useRouter();
@@ -24,7 +25,7 @@ const isActive = (href) => {
     }, []);
 
     if (router.isReady && isClient) {
-        return window.location.href.includes(href);
+        return window.location.href.endsWith(href);
     }
     return false;
 }
@@ -42,6 +43,15 @@ export default function Navbar() {
         router.push(href);
     }
 
+    const menuItems = [
+        {path: "/knowledgeBase", label: "Baza pomocy i wiedzy", icon: ""},
+        {path: "/journal", label: "Dziennik", icon: "Calendar.svg"},
+        {path: "/feeling-journal", label: "Dziennik samopoczucia", icon: "Notebook.svg"},
+        {path: "/my-group", label: "Moja grupa", icon: "Direct Hit.svg"},
+        {path: "/consultation", label: "Konsultacja", icon: ""},
+        {path: "/sos", label: "SOS!", icon: "Warning.svg"},
+    ]
+
     const renderMobileMenu = (
         <Drawer
             anchor={'right'}
@@ -49,8 +59,7 @@ export default function Navbar() {
                 sx: {
                     width: '75%',
                     backgroundColor: theme.palette.primary.dark,
-                    color: theme.palette.primary.contrastText,
-                    fontFamily: theme
+                    color: theme.palette.primary.contrastText
                 }
             }}
             id={mobileMenuId}
@@ -67,16 +76,16 @@ export default function Navbar() {
                     aria-label="show more"
                     aria-controls={mobileMenuId}
                     aria-haspopup="true"
-                    onClick={() => setIsMobileMenuOpen(true)}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     color="inherit"
                 >
-                    <Icon icon="octicon:x-16" />
+                    <Icon icon="octicon:x-16"/>
                 </IconButton>
             </Box>
             <MenuItem onClick={() => handleMenuItemClick('/app')}>
                 <p>Kokpit</p>
             </MenuItem>
-            <MenuItem onClick={() => handleMenuItemClick('/app/knowledge-base')}>
+            <MenuItem onClick={() => handleMenuItemClick('/app/knowledgeBase')}>
                 <p style={{
                     ...(isActive('app/knowledgeBase') && {fontWeight: 'bold'})
                 }}>Baza pomocy i wiedzy</p>
@@ -120,17 +129,15 @@ export default function Navbar() {
     );
 
     return (<>
-        <AppBar position="static">
+        <AppBar position="static" color={'transparent'}>
             <Toolbar>
-                <Typography variant="h6" noWrap>
-                    odNowa
-                </Typography>
+                <Image alt="logo" src={'/logo.png'} width={75} height={75}/>
                 <Box sx={{flexGrow: 1}}/>
                 <Stack direction="row" sx={{display: {xs: 'none', md: 'flex'}}} spacing={2}>
                     <Button color="inherit" onClick={() => handleMenuItemClick('/app')}>Kokpit</Button>
                     <Button sx={{
                         ...(isActive('app/knowledgeBase') && {textDecoration: 'underline'})
-                    }} color="inherit" onClick={() => handleMenuItemClick('/app/knowledge-base')}>Baza pomocy i
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/knowledgeBase')}>Baza pomocy i
                         wiedzy</Button>
                     <Button sx={{
                         ...(isActive('app/journal') && {textDecoration: 'underline'})
