@@ -10,6 +10,8 @@ import {createTheme} from '@mui/material/styles';
 import {ThemeProvider} from "@mui/material";
 import {teal} from "@mui/material/colors";
 import "@/styles/global.scss";
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 //TODO move it to separate file
 const theme = createTheme({
@@ -28,7 +30,9 @@ export default function App({Component, pageProps}) {
         <ThemeProvider theme={theme}>
 
             <ApolloProvider client={client}>
-                <Component {...pageProps} />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <Component {...pageProps} />
+                </LocalizationProvider>
             </ApolloProvider>
         </ThemeProvider>
     )
