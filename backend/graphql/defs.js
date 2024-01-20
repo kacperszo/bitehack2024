@@ -28,10 +28,33 @@ module.exports = gql`
         email: String!
         password: String!
         displayName: String!
+        type: String!
         createdAt: DateTime
         updatedAt: DateTime
 
         authTokens: [UserAuthTokens]
+    }
+    
+    type JournalEntry {
+        id: ID!
+        userId: ID!
+        addiction: String!
+        quantity: String!
+        createdAt: DateTime
+        updatedAt: DateTime
+
+        user: User
+    }
+    
+    type HelpArticle {
+        id: ID!
+        title: String!
+        content: String!
+        author: String!
+        createdAt: DateTime
+        updatedAt: DateTime
+
+        user: User
     }
 
     type UserPagination {
@@ -46,7 +69,7 @@ module.exports = gql`
         refreshToken: String!
         device: String!
         ipAddress: String!
-        lastActive: DateTime!
+        lastActive: DateTime
         createdAt: DateTime
         updatedAt: DateTime
 
@@ -64,20 +87,14 @@ module.exports = gql`
     }
 
     type Mutation {
-        #signIn(input: SignInInput!): User!
-        #signUp(input: SignUpInput!): User!
+        signIn(input: SignInInput!): User!
+        signUp(input: SignUpInput!): User!
         signOut: String!
-        #changeEmail(newEmail: String!): EmailVerification!
-        #cancelEmailChange: String!
-        #resendRegisterEmailVerification(email: String!): EmailVerification!
-        #changePassword(password: String!, newPassword: String!): User!
-        #forgotPassword(email: String!): String!
-        #resetPassword(code: String!, password: String!, confirmPassword: String!): String!
 
-        #reateUser(input: UserInput!): User!
+        createUser(input: UserInput!): User!
         #updateUser(input: UpdateUserInput!): User!
-        #deleteUser(id: ID!): String!
-        #deleteUserAuthToken(userId: ID!, id: ID!): User!
+        deleteUser(id: ID!): String!
+        deleteUserAuthToken(userId: ID!, id: ID!): User!
     }
 
 `;

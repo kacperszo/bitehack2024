@@ -3,13 +3,12 @@
  * @returns { Promise<void> }
  */
 exports.up = async function (knex) {
-    await knex.schema.createTable('users', table => {
+    await knex.schema.createTable('helpArticles', table => {
         table.charset('utf8mb4');
         table.increments('id');
-        table.text('email').notNullable();
-        table.text('displayName').notNullable();
-        table.text('password').notNullable();
-        table.text('type').notNullable();
+        table.text('title').notNullable();
+        table.text('content').notNullable();
+        table.text('author').notNullable();
         table.datetime('createdAt');
         table.datetime('updatedAt');
     });
@@ -20,5 +19,5 @@ exports.up = async function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = async function (knex) {
-    await knex.schema.dropTableIfExists('users');
+    await knex.schema.dropTableIfExists('helpArticles');
 };

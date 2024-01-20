@@ -18,6 +18,7 @@ module.exports = class UserAuthTokens extends Model {
         refreshToken: {type: 'string'},
         device: {type: 'string'},
         ipAddress: {type: 'string'},
+        lastActive: {type: 'string'},
         createdAt: {type: 'string'},
         updatedAt: {type: 'string'}
       }
