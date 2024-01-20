@@ -46,7 +46,7 @@ export default function Layout({children}) {
     return (
         <>
             <Box sx={{
-                display: {xs: 'none', sm: 'flex'},
+                display: {xs: 'none', lg: 'flex'},
                 flexDirection: 'row',
                 alignItems: 'center',
                 height: '100vh',
@@ -109,7 +109,7 @@ export default function Layout({children}) {
                 </Box>
             </Box>
             <Box sx={{
-                display: {xs: 'block', sm: 'none'}
+                display: {xs: 'block', lg: 'none'}
             }}>
                 {children}
             </Box>

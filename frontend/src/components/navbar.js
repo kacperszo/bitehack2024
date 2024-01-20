@@ -104,7 +104,7 @@ export default function Navbar() {
     );
 
     return (<>
-        <AppBar position="static" color={"transparent"} sx={{ display: {xs: 'flex', md: 'none'}, boxShadow: 'none'}}>
+        <AppBar position="static" color={"transparent"} sx={{ display: {xs: 'flex', lg: 'none'}, boxShadow: 'none'}}>
             <Toolbar>
                 <Image alt="logo" src={'/logo.png'} width={75} height={75}/>
                 <Box sx={{flexGrow: 1}}/>
