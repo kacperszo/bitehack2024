@@ -1,157 +1,176 @@
-import {AppBar, Box, Button, IconButton, Menu, MenuItem, Stack, Toolbar, Typography} from "@mui/material";
+import {
+    AppBar,
+    Box,
+    Button,
+    Drawer,
+    IconButton,
+    Menu,
+    MenuItem,
+    Stack,
+    Toolbar,
+    Typography, useTheme
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
+import {Icon} from "@iconify/react";
 
 const isActive = (href) => {
-  const router = useRouter();
-  const [isClient, setIsClient] = useState(false);
+    const router = useRouter();
+    const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(typeof window !== 'undefined');
-  }, []);
+    useEffect(() => {
+        setIsClient(typeof window !== 'undefined');
+    }, []);
 
-  if (router.isReady && isClient) {
-    return window.location.href.includes(href);
-  }
-  return false;
+    if (router.isReady && isClient) {
+        return window.location.href.includes(href);
+    }
+    return false;
 }
 
 export default function Navbar() {
-  const router = useRouter();
+    const router = useRouter();
+    const theme = useTheme();
 
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
+    const mobileMenuId = 'primary-search-account-menu-mobile';
 
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
+    const handleMenuItemClick = (href) => {
+        setIsMobileMenuOpen(false)
+        router.push(href);
+    }
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+    const renderMobileMenu = (
+        <Drawer
+            anchor={'right'}
+            PaperProps={{
+                sx: {
+                    width: '75%',
+                    backgroundColor: theme.palette.primary.dark,
+                    color: theme.palette.primary.contrastText,
+                    fontFamily: theme
+                }
+            }}
+            id={mobileMenuId}
+            open={isMobileMenuOpen}
+        >
+            <Box sx={{
+                paddingX: 2,
+                paddingY: 1,
+                display: 'flex',
+                justifyContent: 'flex-end'
+            }}>
+                <IconButton
+                    size="large"
+                    aria-label="show more"
+                    aria-controls={mobileMenuId}
+                    aria-haspopup="true"
+                    onClick={() => setIsMobileMenuOpen(true)}
+                    color="inherit"
+                >
+                    <Icon icon="octicon:x-16" />
+                </IconButton>
+            </Box>
+            <MenuItem onClick={() => handleMenuItemClick('/app')}>
+                <p>Kokpit</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/app/knowledgeBase')}>
+                <p style={{
+                    ...(isActive('app/knowledgeBase') && {fontWeight: 'bold'})
+                }}>Baza pomocy i wiedzy</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/app/journal')}>
+                <p style={{
+                    ...(isActive('app/journal') && {fontWeight: 'bold'})
+                }}>Dziennik</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/app/feeling-journal')}>
+                <p style={{
+                    ...(isActive('app/feeling-journal') && {fontWeight: 'bold'})
+                }}>Dziennik samopoczucia</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/app/my-group')}>
+                <p style={{
+                    ...(isActive('app/my-group') && {fontWeight: 'bold'})
+                }}>Moja grupa</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/app/my-plan')}>
+                <p style={{
+                    ...(isActive('app/my-plan') && {fontWeight: 'bold'})
+                }}>Mój plan</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/app/stats')}>
+                <p style={{
+                    ...(isActive('app/stats') && {fontWeight: 'bold'})
+                }}>Statystyki</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/app/consultation')}>
+                <p style={{
+                    ...(isActive('app/consultation') && {fontWeight: 'bold'})
+                }}>Konsultacja</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/app/sos')} sx={{color: 'red'}}>
+                <p style={{
+                    ...(isActive('app/sos') && {fontWeight: 'bold'})
+                }}>SOS!</p>
+            </MenuItem>
+        </Drawer>
+    );
 
-  const handleMenuItemClick = (href) => {
-    handleMobileMenuClose();
-    router.push(href);
-  }
-
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem onClick={() => handleMenuItemClick('/app')}>
-        <p>Kokpit</p>
-      </MenuItem>
-      <MenuItem onClick={() => handleMenuItemClick('/app/knowledge-base')}>
-        <p style={{
-          ...(isActive('app/knowledge-base') && {fontWeight: 'bold'})
-        }}>Baza pomocy i wiedzy</p>
-      </MenuItem>
-      <MenuItem onClick={() => handleMenuItemClick('/app/journal')}>
-        <p style={{
-          ...(isActive('app/journal') && {fontWeight: 'bold'})
-        }}>Dziennik</p>
-      </MenuItem>
-      <MenuItem onClick={() => handleMenuItemClick('/app/feeling-journal')}>
-        <p style={{
-          ...(isActive('app/feeling-journal') && {fontWeight: 'bold'})
-        }}>Dziennik samopoczucia</p>
-      </MenuItem>
-      <MenuItem onClick={() => handleMenuItemClick('/app/my-group')}>
-        <p style={{
-          ...(isActive('app/my-group') && {fontWeight: 'bold'})
-        }}>Moja grupa</p>
-      </MenuItem>
-      <MenuItem onClick={() => handleMenuItemClick('/app/my-plan')}>
-        <p style={{
-          ...(isActive('app/my-plan') && {fontWeight: 'bold'})
-        }}>Mój plan</p>
-      </MenuItem>
-      <MenuItem onClick={() => handleMenuItemClick('/app/stats')}>
-        <p style={{
-          ...(isActive('app/stats') && {fontWeight: 'bold'})
-        }}>Statystyki</p>
-      </MenuItem>
-      <MenuItem onClick={() => handleMenuItemClick('/app/consultation')}>
-        <p style={{
-          ...(isActive('app/consultation') && {fontWeight: 'bold'})
-        }}>Konsultacja</p>
-      </MenuItem>
-      <MenuItem onClick={() => handleMenuItemClick('/app/sos')} sx={{color: 'red'}}>
-        <p style={{
-          ...(isActive('app/sos') && {fontWeight: 'bold'})
-        }}>SOS!</p>
-      </MenuItem>
-    </Menu>
-  );
-
-  return (<>
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" noWrap>
-          odNowa
-        </Typography>
-        <Box sx={{flexGrow: 1}}/>
-        <Stack direction="row" sx={{display: {xs: 'none', md: 'flex'}}} spacing={2}>
-          <Button color="inherit" onClick={() => handleMenuItemClick('/app')}>Kokpit</Button>
-          <Button sx={{
-            ...(isActive('app/knowledge-base') && {textDecoration: 'underline'})
-          }} color="inherit" onClick={() => handleMenuItemClick('/app/knowledge-base')}>Baza pomocy i
-            wiedzy</Button>
-          <Button sx={{
-            ...(isActive('app/journal') && {textDecoration: 'underline'})
-          }} color="inherit" onClick={() => handleMenuItemClick('/app/journal')}>Dziennik</Button>
-          <Button sx={{
-            ...(isActive('app/feeling-journal') && {textDecoration: 'underline'})
-          }} color="inherit" onClick={() => handleMenuItemClick('/app/feeling-journal')}>Dziennik
-            samopoczucia</Button>
-          <Button sx={{
-            ...(isActive('app/my-group') && {textDecoration: 'underline'})
-          }} color="inherit" onClick={() => handleMenuItemClick('/app/my-group')}>Moja grupa</Button>
-          <Button sx={{
-            ...(isActive('app/my-plan') && {textDecoration: 'underline'})
-          }} color="inherit" onClick={() => handleMenuItemClick('/app/my-plan')}>Mój plan</Button>
-          <Button sx={{
-            ...(isActive('app/stats') && {textDecoration: 'underline'})
-          }} color="inherit" onClick={() => handleMenuItemClick('/app/stats')}>Statystyki</Button>
-          <Button sx={{
-            ...(isActive('app/consultation') && {textDecoration: 'underline'})
-          }} color="inherit" onClick={() => handleMenuItemClick('/app/consultation')}>Konsultacja</Button>
-          <Button sx={{
-            borderColor: 'red',
-            ...(isActive('app/sos') && {textDecoration: 'underline'})
-          }} color="inherit" variant="outlined"
-                  onClick={() => handleMenuItemClick('/app/sos')}>SOS!</Button>
-        </Stack>
-        <Box sx={{display: {xs: 'flex', md: 'none'}}}>
-          <IconButton
-            size="large"
-            aria-label="show more"
-            aria-controls={mobileMenuId}
-            aria-haspopup="true"
-            onClick={handleMobileMenuOpen}
-            color="inherit"
-          >
-            <MenuIcon/>
-          </IconButton>
-        </Box>
-      </Toolbar>
-    </AppBar>
-    {renderMobileMenu}
-  </>);
+    return (<>
+        <AppBar position="static">
+            <Toolbar>
+                <Typography variant="h6" noWrap>
+                    odNowa
+                </Typography>
+                <Box sx={{flexGrow: 1}}/>
+                <Stack direction="row" sx={{display: {xs: 'none', md: 'flex'}}} spacing={2}>
+                    <Button color="inherit" onClick={() => handleMenuItemClick('/app')}>Kokpit</Button>
+                    <Button sx={{
+                        ...(isActive('app/knowledgeBase') && {textDecoration: 'underline'})
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/knowledgeBase')}>Baza pomocy i
+                        wiedzy</Button>
+                    <Button sx={{
+                        ...(isActive('app/journal') && {textDecoration: 'underline'})
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/journal')}>Dziennik</Button>
+                    <Button sx={{
+                        ...(isActive('app/feeling-journal') && {textDecoration: 'underline'})
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/feeling-journal')}>Dziennik
+                        samopoczucia</Button>
+                    <Button sx={{
+                        ...(isActive('app/my-group') && {textDecoration: 'underline'})
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/my-group')}>Moja grupa</Button>
+                    <Button sx={{
+                        ...(isActive('app/my-plan') && {textDecoration: 'underline'})
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/my-plan')}>Mój plan</Button>
+                    <Button sx={{
+                        ...(isActive('app/stats') && {textDecoration: 'underline'})
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/stats')}>Statystyki</Button>
+                    <Button sx={{
+                        ...(isActive('app/consultation') && {textDecoration: 'underline'})
+                    }} color="inherit" onClick={() => handleMenuItemClick('/app/consultation')}>Konsultacja</Button>
+                    <Button sx={{
+                        borderColor: 'red',
+                        ...(isActive('app/sos') && {textDecoration: 'underline'})
+                    }} color="inherit" variant="outlined"
+                            onClick={() => handleMenuItemClick('/app/sos')}>SOS!</Button>
+                </Stack>
+                <Box sx={{display: {xs: 'flex', md: 'none'}}}>
+                    <IconButton
+                        size="large"
+                        aria-label="show more"
+                        aria-controls={mobileMenuId}
+                        aria-haspopup="true"
+                        onClick={() => setIsMobileMenuOpen(true)}
+                        color="inherit"
+                    >
+                        <MenuIcon/>
+                    </IconButton>
+                </Box>
+            </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+    </>);
 }
