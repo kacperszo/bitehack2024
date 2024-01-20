@@ -13,7 +13,6 @@ export default function AppHome() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundImage: 'url(/gradient-bg.svg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

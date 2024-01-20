@@ -22,7 +22,6 @@ export default function SignIn() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundImage: 'url(/gradient-bg.svg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}

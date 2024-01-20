@@ -13,7 +13,6 @@ export default function MyGroupPage({group}) {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            backgroundImage: 'url(/gradient-bg.svg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}

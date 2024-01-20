@@ -207,7 +207,6 @@ export default function FeelingJournal() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          backgroundImage: 'url(/gradient-bg.svg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

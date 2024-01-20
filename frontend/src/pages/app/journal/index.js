@@ -117,7 +117,6 @@ export default function Journal() {
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    backgroundImage: 'url(/gradient-bg.svg)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                 }}
