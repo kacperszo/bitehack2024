@@ -2,12 +2,13 @@ import Navbar from "@/components/navbar";
 import UserTile from "@/components/mygroup/userTile";
 import {Box, Card, CardContent, Stack, Typography} from "@mui/material";
 import Chat from "@/components/mygroup/Chat";
+import Layout from "@/components/layout";
 
 export default function MyGroupPage({group}) {
     const {name, users} = group
 
     return (
-      <>
+      <Layout>
         <Navbar/>
         <Box
           sx={{
@@ -58,7 +59,7 @@ export default function MyGroupPage({group}) {
             </Card>
           </Stack>
         </Box>
-        </>
+        </Layout>
     )
 }
 

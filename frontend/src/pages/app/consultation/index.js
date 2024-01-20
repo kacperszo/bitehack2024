@@ -22,6 +22,7 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import SettingsIcon from '@mui/icons-material/Settings';
 import {useState} from "react";
 import {DateTimePicker} from "@mui/x-date-pickers";
+import Layout from "@/components/layout";
 
 export default function Consultation() {
   const [open, setOpen] = useState(false);
@@ -31,7 +32,7 @@ export default function Consultation() {
   }
 
   return (
-    <>
+    <Layout>
       <Navbar/>
       <Box
         sx={{
@@ -121,6 +122,6 @@ export default function Consultation() {
           </Grid>
         </Stack>
       </Box>
-    </>
+    </Layout>
   );
 }

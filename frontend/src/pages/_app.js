@@ -23,6 +23,7 @@ const theme = createTheme({
             contrastText: '#fff',
         },
         secondary: teal,
+        background: '#EFFDF3'
     },
 });
 export default function App({Component, pageProps}) {
