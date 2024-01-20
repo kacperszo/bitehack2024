@@ -28,7 +28,6 @@ const theme = createTheme({
 export default function App({Component, pageProps}) {
     return (
         <ThemeProvider theme={theme}>
-
             <ApolloProvider client={client}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <Component {...pageProps} />
