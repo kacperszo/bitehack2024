@@ -1,19 +1,17 @@
 const User = require("../../../models/User");
+const {UserAuthTokens} = require("../types");
+const utils = require("../../../utils");
 
 module.exports = {
     createUser: async (_, { input }, context) => {
         await context.authGuard();
 
         try {
-            await context.user.can('createUser');
-
-            input.id = parseInt(input.id);
-
             if (!['addict', 'non-addict', 'psychiatrist'].includes(input.type)) {
                 throw new Error('Validation failed. Uknown Type.')
             }
 
-            return (await User.query().insert(input));
+            return await User.query().insert(input);
         } catch (error) {
             return utils.throwGraphqlError(error);
         }
@@ -28,8 +26,6 @@ module.exports = {
             if (!user) {
                 throw new Error('Not found.');
             }
-
-            await user.checkPolicy('update', context.user);
 
             const authToken = await UserAuthTokens.query().findById(parseInt(id));
 
@@ -54,8 +50,6 @@ module.exports = {
             if (!user) {
                 throw new Error('Not found.');
             }
-
-            await user.checkPolicy('delete', context.user);
 
             return (await user.$query().delete()) ? 'success' : 'fail';
         } catch (error) {

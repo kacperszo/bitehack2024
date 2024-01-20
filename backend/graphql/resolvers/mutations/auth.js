@@ -30,14 +30,12 @@ module.exports = {
                 throw new Error('User with that email already exists.');
             }
 
-            const newUser = await User.query().insert({
+            return await User.query().insert({
                 email,
                 displayName,
                 password,
                 type
             });
-
-            return newUser;
         } catch (error) {
             utils.throwGraphqlError(error);
         }
