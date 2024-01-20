@@ -79,9 +79,7 @@ module.exports = gql`
 
     type Mutation {
         signIn(input: SignInInput!): User!
-        signInByGoogle: String
         signUp(input: SignUpInput!): User!
-        signUpToWallet(input: SignUpToWalletInput!): User!
         signOut: String!
         changeEmail(newEmail: String!): EmailVerification!
         cancelEmailChange: String!
@@ -93,38 +91,8 @@ module.exports = gql`
         createUser(input: UserInput!): User!
         updateUser(input: UpdateUserInput!): User!
         deleteUser(id: ID!): String!
-        deleteUserAvatar(id: ID!): User!
         deleteUserAuthToken(userId: ID!, id: ID!): User!
         updateUserPermissions(id: ID!, newPermissions: String!): User!
-
-        createCredentialTemplate(input: CredentialTemplateInput!): CredentialTemplate!
-        updateCredentialTemplate(input: UpdateCredentialTemplateInput!): CredentialTemplate!
-        deleteCredentialTemplate(id: ID!): String!
-
-        createBadgeTemplate(input: BadgeTemplateInput!): BadgeTemplate!
-        updateBadgeTemplate(input: UpdateBadgeTemplateInput!): BadgeTemplate!
-        deleteBadgeTemplate(id: ID!): String!
-
-        createEmailTemplate(input: EmailTemplateInput!): EmailTemplate!
-        updateEmailTemplate(input: UpdateEmailTemplateInput!): EmailTemplate!
-        sendTestEmailTemplate(id: ID!): String!
-        deleteEmailTemplate(id: ID!): String!
-
-        createVariable(input: VariableInput!): Variable!
-        updateVariable(input: UpdateVariableInput!): Variable!
-        deleteVariable(id: ID!): String!
-
-        createDiscountCode(input: DiscountCodeInput!): DiscountCode!
-        updateDiscountCode(input: UpdateDiscountCodeInput!): DiscountCode!
-        deleteDiscountCode(id: ID!): String!
-
-        createImage(input: ImageInput!): Image!
-        updateImage(input: UpdateImageInput!): Image!
-        deleteImage(id: ID!): String!
-
-        createAddon(input: AddonInput!): Addon!
-        updateAddon(input: UpdateAddonInput!): Addon!
-        deleteAddon(id: ID!): String!
     }
 
 `;
