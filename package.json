@@ -7,11 +7,11 @@
   },
   "scripts": {
     "install": "concurrently \"yarn run install-frontend\" \"yarn run install-backend\"",
-    "install-frontend": "(cd ./packages/frontend && yarn install)",
-    "build-frontend": "(cd ./packages/frontend && yarn build)",
-    "install-backend": "(cd ./packages/backend && yarn install)",
-    "frontend": "(cd ./packages/frontend && yarn next)",
-    "backend": "(cd ./packages/backend && yarn nodemon app)",
+    "install-frontend": "(cd ./frontend && yarn install)",
+    "build-frontend": "(cd ./frontend && yarn build)",
+    "install-backend": "(cd ./backend && yarn install)",
+    "frontend": "(cd ./frontend && yarn next)",
+    "backend": "(cd ./backend && yarn nodemon app)",
     "server": "concurrently \"yarn run frontend\" \"yarn run backend\""
   }
 }
