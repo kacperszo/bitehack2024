@@ -1,5 +1,6 @@
 import {Box, Button, Stack, Typography} from "@mui/material";
 import {useRouter} from "next/router";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function Home() {
         maxWidth: '100%'
       }}
     >
+      <Image src={"/logo.png"} alt={"logo"} width={150} height={150}/>
       <Typography variant="h2" align="center">
         odNowa
       </Typography>
