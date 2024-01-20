@@ -9,8 +9,11 @@ export default function ClinicCodeForm({value, setValue}) {
             paddingBottom: 1,
         }}>
             <FormControl>
-                <Typography id="radio-select-are-you-from-clinic">Podaj kod który otrzymałeś w klinice</Typography>
-                <TextField sx={{marginTop: 2}} fullWidth value={value} onChange={e => setValue(e.target.value)}/>
+                <Typography textAlign={"center"} sx={{display: "block", p: 3}} fontWeight={600} variant={"h4"}>Podaj kod
+                    otrzymany w przychodni</Typography>
+                <Typography sx={{display: "block", p: 3}} textAlign={"center"} variant={"subheader"}>Dzięki temu
+                    zostanie aktywowane twoje konto</Typography> <TextField sx={{marginTop: 2}} fullWidth value={value}
+                                                                            onChange={e => setValue(e.target.value)}/>
             </FormControl>
         </Box>
     )
