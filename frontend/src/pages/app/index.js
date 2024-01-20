@@ -1,11 +1,12 @@
 import {Box, Grid, Stack, Typography} from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
+import Layout from "@/components/layout";
 
 export default function AppHome() {
 
   return (
-    <>
+    <Layout>
       <Navbar/>
       <Box
         sx={{
@@ -33,6 +34,6 @@ export default function AppHome() {
           </Grid>
         </Stack>
       </Box>
-    </>
+    </Layout>
   );
 }

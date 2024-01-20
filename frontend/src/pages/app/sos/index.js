@@ -1,10 +1,11 @@
 import {Box, Button, Card, CardContent, Grid, Stack, Typography} from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
+import Layout from "@/components/layout";
 
 export default function FeelingJournal() {
   return (
-    <>
+    <Layout>
       <Navbar/>
       <Box
         sx={{
@@ -56,6 +57,6 @@ export default function FeelingJournal() {
           </Grid>
         </Stack>
       </Box>
-    </>
+    </Layout>
   );
 }

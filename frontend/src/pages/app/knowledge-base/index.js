@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar";
 import KnowledgeTab from "@/components/knowledgeBase/knowledgeTab";
 import {useState} from "react";
 import * as React from "react";
+import Layout from "@/components/layout";
 
 export default function KnowledgeBasePage() {
     const theme = useTheme();
@@ -24,7 +25,7 @@ export default function KnowledgeBasePage() {
 
 const Hero = ({children}) => {
     return (
-        <>
+        <Layout>
             <Navbar/>
             <Box sx={{
                 pt: 10,
@@ -38,6 +39,6 @@ const Hero = ({children}) => {
             }}>
                 {children}
             </Box>
-        </>
+        </Layout>
     )
 }

@@ -104,42 +104,11 @@ export default function Navbar() {
     );
 
     return (<>
-        <AppBar position="static" color={"transparent"} sx={{boxShadow: 'none'}}>
+        <AppBar position="static" color={"transparent"} sx={{ display: {xs: 'flex', md: 'none'}, boxShadow: 'none'}}>
             <Toolbar>
                 <Image alt="logo" src={'/logo.png'} width={75} height={75}/>
                 <Box sx={{flexGrow: 1}}/>
-                <Drawer
-                    anchor={'left'}
-                    PaperProps={{
-                        sx: {
-                            width: '25vw',
-                        }
-                    }}
-                    ModalProps={{
-                        keepMounted: false,
-                    }}
-                    open={true}
-                >
-                    {menuItems.map((item, index) => {
-                        const {path, label, icon} = item
-                        return (
-                            <MenuItem key={index} sx={{fontFamily: 'Poppins'}}
-                                      onClick={() => handleMenuItemClick(`/app${path}`)}>
-                                <Box sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: 2,
-                                    fontSize: 20,
-                                    textWrap: 'wrap'
-                                }}>
-                                    <Image alt={label} src={`/icons/${icon}`} width={36} height={36}/>
-                                    <p style={{...(isActive(`app${path}`) && {fontWeight: 'bold'})}}>{label}</p>
-                                </Box>
-                            </MenuItem>
-                        )
-                    })}
-                </Drawer>
-                <Box sx={{display: {xs: 'flex', md: 'none'}}}>
+                <Box>
                     <IconButton
                         size="large"
                         aria-label="show more"

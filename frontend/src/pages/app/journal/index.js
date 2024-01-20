@@ -6,6 +6,7 @@ import plLocale from '@fullcalendar/core/locales/pl';
 
 import DangerousIcon from '@mui/icons-material/Dangerous';
 import {useState} from "react";
+import Layout from "@/components/layout";
 
 export const getIcon = () => {
     const iconStyle = {
@@ -106,7 +107,7 @@ export default function Journal() {
     }
 
     return (
-        <>
+        <Layout>
             <Navbar/>
             <Dialog open={detailsOpen} onClose={handleDetailsClose}>
                 <DialogContent>
@@ -135,19 +136,20 @@ export default function Journal() {
                     <Card sx={{mt: 4, mb: 5}}>
                         <CardContent>
                             <FullCalendar
-                              plugins={[dayGridPlugin]}
-                              initialView='dayGridMonth'
-                              weekends={true}
-                              events={events}
-                              eventContent={renderEventContent}
-                              locale={plLocale}
-                              eventClick={handleEventClick}
+                                height={'75vh'}
+                                plugins={[dayGridPlugin]}
+                                initialView='dayGridMonth'
+                                weekends={true}
+                                events={events}
+                                eventContent={renderEventContent}
+                                locale={plLocale}
+                                eventClick={handleEventClick}
                             />
                         </CardContent>
                     </Card>
 
                 </Stack>
             </Box>
-        </>
+        </Layout>
     );
 }

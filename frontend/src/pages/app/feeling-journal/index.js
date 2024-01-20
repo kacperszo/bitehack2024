@@ -156,7 +156,7 @@ export default function FeelingJournal() {
   }
 
   return (
-    <>
+    <Layout>
       <Navbar/>
       <Dialog fullWidth maxWidth="sm" open={createOpen} onClose={handleDetailsClose}>
         <DialogTitle>Jak się dzisiaj czujesz?</DialogTitle>
@@ -240,6 +240,6 @@ export default function FeelingJournal() {
 
         </Stack>
       </Box>
-    </>
+    </Layout>
   );
 }
