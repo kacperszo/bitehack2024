@@ -1,11 +1,17 @@
 {
-  "name": "bitehack2023",
-  "version": "1.0.0",
-  "description": "BiteHack 2023",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "bitehack2024",
+  "version": "1.0",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^8.0.1"
   },
-  "author": "",
-  "license": "ISC"
+  "scripts": {
+    "install": "concurrently \"yarn run install-frontend\" \"yarn run install-backend\"",
+    "install-frontend": "(cd ./packages/frontend && yarn install)",
+    "build-frontend": "(cd ./packages/frontend && yarn build)",
+    "install-backend": "(cd ./packages/backend && yarn install)",
+    "frontend": "(cd ./packages/frontend && yarn next)",
+    "backend": "(cd ./packages/backend && yarn nodemon app)",
+    "server": "concurrently \"yarn run frontend\" \"yarn run backend\""
+  }
 }
