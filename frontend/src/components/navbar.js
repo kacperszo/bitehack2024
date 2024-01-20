@@ -1,7 +1,21 @@
 import {AppBar, Box, Button, IconButton, Menu, MenuItem, Stack, Toolbar, Typography} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {useRouter} from "next/router";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+
+const isActive = (href) => {
+  const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(typeof window !== 'undefined');
+  }, []);
+
+  if (router.isReady && isClient) {
+    return window.location.href.includes(href);
+  }
+  return false;
+}
 
 export default function Navbar() {
   const router = useRouter();
@@ -22,13 +36,6 @@ export default function Navbar() {
   const handleMenuItemClick = (href) => {
     handleMobileMenuClose();
     router.push(href);
-  }
-
-  const isActive = (href) => {
-    if (router.isReady) {
-      return window.location.href.includes(href);
-    }
-    return false;
   }
 
   const renderMobileMenu = (
