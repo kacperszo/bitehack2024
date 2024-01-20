@@ -1,4 +1,16 @@
-import {Box, Button, Card, CardContent, Dialog, DialogContent, Stack, Typography} from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Stack,
+  TextField,
+  Typography
+} from "@mui/material";
 import Navbar from "@/components/navbar";
 // import dayGridPlugin from '@fullcalendar/daygrid'
 // import FullCalendar from "@fullcalendar/react";
@@ -128,6 +140,7 @@ export default function FeelingJournal() {
     )
   }
 
+  const [createOpen, setCreateOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -138,13 +151,51 @@ export default function FeelingJournal() {
 
   function handleDetailsClose() {
     setDetailsOpen(false);
+    setCreateOpen(false);
     setSelectedEvent(null);
   }
 
   return (
     <>
       <Navbar/>
-      <Dialog open={detailsOpen} onClose={handleDetailsClose}>
+      <Dialog fullWidth maxWidth="sm" open={createOpen} onClose={handleDetailsClose}>
+        <DialogTitle>Jak się dzisiaj czujesz?</DialogTitle>
+        <DialogContent>
+          <Stack direction="row" spacing={1}>
+            <Box sx={{cursor: 'pointer'}}>
+              {matchWellbeingIcon('very bad')}
+            </Box>
+            <Box sx={{cursor: 'pointer'}}>
+              {matchWellbeingIcon('bad')}
+            </Box>
+            <Box sx={{cursor: 'pointer'}}>
+              {matchWellbeingIcon('neutral')}
+            </Box>
+            <Box sx={{cursor: 'pointer'}}>
+              {matchWellbeingIcon('good')}
+            </Box>
+            <Box sx={{cursor: 'pointer'}}>
+              {matchWellbeingIcon('very good')}
+            </Box>
+          </Stack>
+          <Stack sx={{mt: 2}} spacing={2}>
+            <TextField
+              label="Jak się dzisiaj czułeś?"
+            />
+            <TextField
+              label="Jakie były dzisiaj pozytywne wydarzenia?"
+            />
+            <TextField
+              label="Jakie były negatywy dzisiejszego dnia?"
+            />
+          </Stack>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="outlined" onClick={handleDetailsClose}>Zamknij</Button>
+          <Button variant="contained" onClick={handleDetailsClose}>Zapisz</Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog fullWidth maxWidth="xs" open={detailsOpen} onClose={handleDetailsClose}>
         <DialogContent>
           {matchWellbeingIcon(selectedEvent?.title)}
           <Typography variant="body2">Ogólne samopoczucie: {selectedEvent?.extendedProps.desc1}</Typography>
@@ -168,7 +219,9 @@ export default function FeelingJournal() {
                 Dziennik samopoczucia
               </Typography>
             </Box>
-            <Button variant="contained">Dodaj nowy wpis</Button>
+            <Box>
+              <Button variant="contained" onClick={() => setCreateOpen(true)}>Dodaj</Button>
+            </Box>
           </Stack>
 
 

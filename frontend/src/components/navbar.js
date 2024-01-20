@@ -47,6 +47,9 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem onClick={() => handleMenuItemClick('/app')}>
+        <p>Kokpit</p>
+      </MenuItem>
       <MenuItem onClick={() => handleMenuItemClick('/app/knowledge-base')}>
         <p style={{
           ...(isActive('app/knowledge-base') && {fontWeight: 'bold'})
@@ -98,6 +101,7 @@ export default function Navbar() {
         </Typography>
         <Box sx={{flexGrow: 1}}/>
         <Stack direction="row" sx={{display: {xs: 'none', md: 'flex'}}} spacing={2}>
+          <Button color="inherit" onClick={() => handleMenuItemClick('/app')}>Kokpit</Button>
           <Button sx={{
             ...(isActive('app/knowledge-base') && {textDecoration: 'underline'})
           }} color="inherit" onClick={() => handleMenuItemClick('/app/knowledge-base')}>Baza pomocy i
