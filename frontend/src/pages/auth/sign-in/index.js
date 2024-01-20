@@ -1,6 +1,7 @@
 import {Box, Button, Stack, TextField, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import {useState} from "react";
+import Image from "next/image";
 
 export default function SignIn() {
   const router = useRouter();
@@ -10,6 +11,7 @@ export default function SignIn() {
 
   const submit = () => {
     //login
+    router.push('/app')
   }
 
   return (
@@ -25,6 +27,7 @@ export default function SignIn() {
         backgroundPosition: 'center'
       }}
     >
+      <Image src={"/logo.png"} alt={"logo"} width={150} height={150}/>
       <Typography variant="h2" align="center">
         odNowa
       </Typography>
