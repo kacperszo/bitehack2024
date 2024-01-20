@@ -1,13 +1,38 @@
-import Image from "next/image";
-import {Inter} from "next/font/google";
-import {Button} from "@mui/material";
-
-const inter = Inter({subsets: ["latin"]});
+import {Box, Button, Stack, Typography} from "@mui/material";
+import {useRouter} from "next/router";
 
 export default function Home() {
-    return (
-        <>
-            <Button variant="outlined">Hello world</Button>
-        </>
-    );
+  const router = useRouter();
+
+  return (
+    <Box
+      sx={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundImage: 'url(gradient-bg.svg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        maxWidth: '100%'
+      }}
+    >
+      <Typography variant="h2" align="center">
+        odNowa
+      </Typography>
+      <Typography variant="h6" align="center">
+        Zacznij swoje życie od nowa, bez uzależnień.
+      </Typography>
+
+      <Stack direction="row" spacing={2} sx={{mt: 2}}>
+        <Button variant="contained" size="small" onClick={() => router.push('/auth/sign-in')}>
+          Zaloguj się
+        </Button>
+        <Button variant="contained" size="small" onClick={() => router.push('/auth/sign-up')}>
+          Zarejestruj się
+        </Button>
+      </Stack>
+    </Box>
+  );
 }
