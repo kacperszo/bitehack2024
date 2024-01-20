@@ -3,12 +3,10 @@
  * @returns { Promise<void> }
  */
 exports.up = async function (knex) {
-    await knex.schema.createTable('journalEntries', table => {
+    await knex.schema.createTable('userGroups', table => {
         table.charset('utf8mb4');
         table.increments('id');
-        table.integer('userId').unsigned().references('users.id').notNullable();
-        table.text('addiction').notNullable();
-        table.text('quantity').notNullable();
+        table.text('name').notNullable();
         table.datetime('createdAt');
         table.datetime('updatedAt');
     });
@@ -19,5 +17,5 @@ exports.up = async function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = async function (knex) {
-    await knex.schema.dropTableIfExists('journalEntries');
+    await knex.schema.dropTableIfExists('userGroups');
 };

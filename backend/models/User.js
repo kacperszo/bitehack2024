@@ -13,6 +13,7 @@ module.exports = class User extends Model {
       'displayName',
       'password',
       'type',
+      'groupId',
       'createdAt',
       'updatedAt'
     ];
@@ -32,6 +33,7 @@ module.exports = class User extends Model {
         },
         password: { type: 'string' },
         type: { type: 'string' },
+        groupId: { type: 'integer' },
         createdAt: { type: 'string' },
         updatedAt: { type: 'string' }
       }
@@ -40,6 +42,7 @@ module.exports = class User extends Model {
 
   static get relationMappings() {
     const UserAuthTokens = require('./UserAuthTokens');
+    const UsersGroup = require("./UsersGroup");
 
     return {
       authTokens: {
@@ -50,6 +53,14 @@ module.exports = class User extends Model {
           to: 'userAuthTokens.userId'
         }
       },
+      group: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: UsersGroup,
+        join: {
+          from: 'users.groupId',
+          to: 'usersGroups.id'
+        }
+      }
     };
   }
 

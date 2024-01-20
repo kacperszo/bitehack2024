@@ -14,7 +14,7 @@ export default function AreYouFromClinicForm({value, setValue}) {
                     aria-labelledby="radio-select-are-you-from-clinic"
                     defaultValue={false}
                     value={value}
-                    onChange={e => setValue(e.target.value)}
+                    onChange={e => setValue(e.target.value=="true")}
                     name="radio-select-are-you-from-clinic"
                 >
                     <FormControlLabel value={true} control={<Radio/>} label="Tak"/>
