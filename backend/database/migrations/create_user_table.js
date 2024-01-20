@@ -9,6 +9,7 @@ exports.up = async function (knex) {
         table.string('email').notNullable();
         table.string('displayName').notNullable();
         table.text('password').notNullable();
+        table.text('type').notNullable();
         table.datetime('createdAt');
         table.datetime('updatedAt');
     });

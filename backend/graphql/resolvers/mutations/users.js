@@ -9,6 +9,10 @@ module.exports = {
 
             input.id = parseInt(input.id);
 
+            if (!['addict', 'non-addict', 'psychiatrist'].includes(input.type)) {
+                throw new Error('Validation failed. Uknown Type.')
+            }
+
             return (await User.query().insert(input));
         } catch (error) {
             return utils.throwGraphqlError(error);

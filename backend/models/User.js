@@ -1,5 +1,5 @@
-const {Model} = require('objection');
-const {isEmail, isMobilePhone} = require('validator');
+const { Model } = require('objection');
+const { isEmail, isMobilePhone } = require('validator');
 const bcrypt = require('bcrypt');
 const moment = require('moment');
 
@@ -12,6 +12,7 @@ module.exports = class User extends Model {
       'email',
       'displayName',
       'password',
+      'type',
       'createdAt',
       'updatedAt'
     ];
@@ -20,18 +21,19 @@ module.exports = class User extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['email', 'displayName', 'password'],
+      required: ['email', 'displayName', 'password', 'type'],
       properties: {
-        id: {type: 'integer'},
-        email: {type: 'string'},
+        id: { type: 'integer' },
+        email: { type: 'string' },
         displayName: {
           type: 'string',
           minLength: 5,
           maxLength: 40
         },
-        password: {type: 'string'},
-        createdAt: {type: 'string'},
-        updatedAt: {type: 'string'}
+        password: { type: 'string' },
+        type: { type: 'string' },
+        createdAt: { type: 'string' },
+        updatedAt: { type: 'string' }
       }
     };
   }
