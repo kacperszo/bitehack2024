@@ -24,10 +24,10 @@ export default function AreYouFromClinicForm({value, setValue}) {
 
     }}>
         <Box>
-            <Typography textAlign={"center"} sx={{display: "block", p: 3}} fontWeight={600} variant={"h4"}>Czy trafiłeś
+            <Typography textAlign={"center"}  sx={{display: "block", p: 3, pb: 0}} fontWeight={600} variant={"h4"}>Czy trafiłeś
                 tutaj z
                 kilniki?</Typography>
-            <Typography sx={{display: "block", p: 3}} textAlign={"center"} variant={"subheader"}>Ta informacja
+            <Typography sx={{display: "block", p: 3, pt: 1}} textAlign={"center"} variant={"subheader"}>Ta informacja
                 usprawni
                 process
                 rejestracji</Typography>

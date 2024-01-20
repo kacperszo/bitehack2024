@@ -23,7 +23,6 @@ export default function IsItYourProblemForm({value, setValue}) {
     }
     const notSelectedBtnStyle = {
         color: theme.palette.primary.dark, borderColor: theme.palette.primary.dark,
-        // borderWidth: "2px" will break hover effect
     }
 
     return (<Box sx={{
@@ -34,9 +33,9 @@ export default function IsItYourProblemForm({value, setValue}) {
 
     }}>
         <Box>
-            <Typography textAlign={"center"} sx={{display: "block", p: 3}} fontWeight={600} variant={"h4"}>Kogo dotyczy
+            <Typography textAlign={"center"} sx={{display: "block", p: 3, pb: 0}} fontWeight={600} variant={"h4"}>Kogo dotyczy
                 problem uzależnienia?</Typography>
-            <Typography sx={{display: "block", p: 3}} textAlign={"center"} variant={"subheader"}>Dzięki temu będzieś
+            <Typography sx={{display: "block", p: 3, pt:1}} textAlign={"center"} variant={"subheader"}>Dzięki temu będzieś
                 miał/a
                 dostęp do odpowiednich funkcji aplikacji</Typography>
         </Box>
