@@ -18,7 +18,7 @@ function MobileSOSLayout() {
     return <Stack direction={"column"}>
         <InfoCard>
             <Box>
-                <Typography fontWeight={600} variant={"h6"}><
+                <Typography fontWeight={600} variant={"h4"}><
                     Image
                     style={{paddingLeft: 10, paddingRight: 10,}}
                     src={"/icons/Warning.svg"} width={30} height={30}

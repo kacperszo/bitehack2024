@@ -176,7 +176,7 @@ export default function FeelingJournal() {
             <Dialog fullWidth maxWidth="sm" open={createOpen} onClose={handleDetailsClose}>
                 <DialogContent sx={{backgroundColor: "#D9EDDF"}}>
                     <Box sx={{
-                        borderRadius: 10,
+                        borderRadius: "10px",
                         backgroundColor: "#EFFDF3",
                         p: 2,
                         textAlign: "center",
@@ -206,7 +206,7 @@ export default function FeelingJournal() {
                     </Box>
 
                     <Box sx={{
-                        borderRadius: 10,
+                        borderRadius: "10px",
                         mt: 2,
                         backgroundColor: "#EFFDF3",
                         p: 2,
@@ -230,7 +230,7 @@ export default function FeelingJournal() {
             <Dialog fullWidth maxWidth="xs" open={detailsOpen} onClose={handleDetailsClose}>
                 <DialogContent sx={{backgroundColor: "#D9EDDF"}}>
                     <Box sx={{
-                        borderRadius: 10,
+                        borderRadius: "10px",
                         mt: 2,
                         backgroundColor: "#EFFDF3",
                         p: 2,
@@ -256,7 +256,11 @@ export default function FeelingJournal() {
                 <Stack sx={{mt: 4, px: 5}} textAlign="left">
                     <Stack direction="row">
                         <Box flexGrow={1}>
-                            <Typography variant="h4">
+                            <Typography fontWeight={600} variant="h4">
+                                <Image
+                                    style={{paddingLeft: 10, paddingRight: 10,}}
+                                    src={"/icons/Book.svg"} width={30} height={30}
+                                    alt={"Book"}/>
                                 Dziennik samopoczucia
                             </Typography>
                         </Box>

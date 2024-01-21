@@ -20,7 +20,7 @@ import CallEndIcon from '@mui/icons-material/CallEnd';
 import MicIcon from '@mui/icons-material/Mic';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import SettingsIcon from '@mui/icons-material/Settings';
-import {useState} from "react";
+import React, {useState} from "react";
 import {DateTimePicker} from "@mui/x-date-pickers";
 import Layout from "@/components/layout";
 
@@ -64,7 +64,11 @@ export default function Consultation() {
         <Stack sx={{mt: 4, px: 5}} textAlign="left">
           <Stack direction="row">
             <Box flexGrow={1}>
-              <Typography variant="h4">
+              <Typography fontWeight={600} variant="h4">
+                <Image
+                    style={{paddingLeft: 10, paddingRight: 10,}}
+                    src={"/icons/Book.svg"} width={30} height={30}
+                    alt={"Book"}/>
                 Konsultacja ze specjalistą
               </Typography>
             </Box>

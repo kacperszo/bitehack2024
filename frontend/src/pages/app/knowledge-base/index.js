@@ -33,10 +33,9 @@ export default function KnowledgeBasePage() {
             }}>
                 <InfoCard>
                     <Box>
-                        <Typography fontWeight={600} variant={"h6"} sx={{
+                        <Typography fontWeight={600} variant={"h4"} sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            fontSize: '1.5rem'
                         }}>
                             <Image
                                 style={{paddingLeft: 10, paddingRight: 10,}}
@@ -106,13 +105,30 @@ export default function KnowledgeBasePage() {
                                 width: '100%',
                                 height: '30vw',
                             }}>
-                                <Image src={`/articles/article3.png`} alt={'Spokój - jak go osiągnąć'} layout={'fill'} objectFit={'cover'}
+                                <Image src={`/articles/article3.png`} alt={'Spokój - jak go osiągnąć'} layout={'fill'}
+                                       objectFit={'cover'}
                                        style={{borderRadius: '15px 15px 0 0'}}/>
                             </Box>
                             <Box>
-                                <Typography sx={{color: '#00350D', fontFamily: 'Poppins', fontWeight: 'bold', p: 1, pb: 0}}>{'Spokój - jak go osiągnąć'}</Typography>
-                                <Typography sx={{fontFamily: 'Poppins', fontSize: '0.75rem', p: 1, pt: 0}}>{'Niektóre rzeczy w życiu są poza Twoją kontrolą. Zamiast się nimi martwić, spróbuj je zaakceptować i skupić się na tym, co możesz zmienić.'}</Typography>
-                                <Typography sx={{color: '#2B5B30', fontFamily: 'Poppins', p: 1, pt: 0}}>{'Anna wiśniowska'}</Typography>
+                                <Typography sx={{
+                                    color: '#00350D',
+                                    fontFamily: 'Poppins',
+                                    fontWeight: 'bold',
+                                    p: 1,
+                                    pb: 0
+                                }}>{'Spokój - jak go osiągnąć'}</Typography>
+                                <Typography sx={{
+                                    fontFamily: 'Poppins',
+                                    fontSize: '0.75rem',
+                                    p: 1,
+                                    pt: 0
+                                }}>{'Niektóre rzeczy w życiu są poza Twoją kontrolą. Zamiast się nimi martwić, spróbuj je zaakceptować i skupić się na tym, co możesz zmienić.'}</Typography>
+                                <Typography sx={{
+                                    color: '#2B5B30',
+                                    fontFamily: 'Poppins',
+                                    p: 1,
+                                    pt: 0
+                                }}>{'Anna wiśniowska'}</Typography>
                             </Box>
                         </Box>
                     </Box>
@@ -150,7 +166,8 @@ export default function KnowledgeBasePage() {
                         fontFamily: 'Poppins'
                     }}>Maks</Typography>
                     <Box sx={{position: 'relative', width: '100%', height: '30vw', my: 3}}><Image
-                        src={'/articles/article4.png'} alt={'Maks'} layout={'fill'} objectFit={'cover'}/></Box>
+                        src={'/undraw_artificial_intelligence.svg'} alt={'Maks'} layout={'fill'}
+                        objectFit={'cover'}/></Box>
                     <Typography sx={{fontFamily: 'Poppins', textAlign: 'center', fontSize: '0.85rem', pb: 4}}>Jeśli masz
                         jakieś pytania na które nie znalazłeś odpowiedzi w artykułach służę pomocą</Typography>
                     <input style={{

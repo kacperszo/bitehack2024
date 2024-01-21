@@ -3,6 +3,8 @@ import UserTile from "@/components/mygroup/userTile";
 import {Box, Card, CardContent, Stack, Typography} from "@mui/material";
 import Chat from "@/components/mygroup/Chat";
 import Layout from "@/components/layout";
+import Image from "next/image";
+import * as React from "react";
 
 export default function MyGroupPage({group}) {
     const {name, users} = group
@@ -24,8 +26,15 @@ export default function MyGroupPage({group}) {
                         <Box flexGrow={1} sx={{
                             textAlign: 'center'
                         }}>
-                            <Typography variant="h4">
-                                Moja grupa do wzajemnego wsparcia
+                            <Typography fontWeight={600} variant={"h4"} sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}>
+                                <Image
+                                    style={{paddingLeft: 10, paddingRight: 10,}}
+                                    src={"/icons/Book.svg"} width={30} height={30}
+                                    alt={"Book"}/>
+                                Moja grupa wzajemnego wsparcia
                             </Typography>
                             <Typography variant="body2">
                                 Porozmawiaj z osobami, które mogą zmagać się z tym samym problemem.
@@ -37,7 +46,7 @@ export default function MyGroupPage({group}) {
                             </Typography>
                         </Box>
                     </Stack>
-                    <Card sx={{ pb: 4, height: '100%', boxShadow: 'none'}}>
+                    <Card sx={{pb: 4, height: '100%', boxShadow: 'none'}}>
                         <CardContent sx={{height: '100%', display: 'flex', flexDirection: 'column'}}>
                             <Box sx={{
                                 display: 'flex',
