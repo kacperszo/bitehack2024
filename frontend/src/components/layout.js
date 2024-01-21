@@ -95,6 +95,7 @@ export default function Layout({children}) {
                     backgroundColor: theme.palette.background,
                     borderRadius: '25px',
                     height: '95vh',
+                    overflowY: "auto",
                     marginRight: '2.5vh',
                 }}>
                     {children}
