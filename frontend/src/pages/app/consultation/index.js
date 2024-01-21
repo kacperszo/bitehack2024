@@ -43,8 +43,8 @@ export default function Consultation() {
         }}
       >
         <Dialog fullWidth maxWidth="sm" open={open} onClose={handleClose}>
-          <DialogTitle>Umów konsultację ze specjalistą</DialogTitle>
-          <DialogContent>
+          <DialogTitle sx={{backgroundColor: "#EFFDF3"}}>Umów konsultację ze specjalistą</DialogTitle>
+          <DialogContent sx={{backgroundColor: "#EFFDF3"}}>
             <Stack sx={{mt: 2}} spacing={2}>
               <Alert severity="info">Wybierz dostępny termin z kalendarza poniżej. Po wysłaniu formularza, otrzymasz
                 powiadomienie czy wizyta została prawidłowo zarejestrowana.</Alert>
@@ -56,7 +56,7 @@ export default function Consultation() {
               />
             </Stack>
           </DialogContent>
-          <DialogActions>
+          <DialogActions sx={{backgroundColor: "#EFFDF3",}}>
             <Button variant="outlined" onClick={handleClose}>Zamknij</Button>
             <Button variant="contained" onClick={handleClose}>Zamów</Button>
           </DialogActions>
@@ -91,7 +91,7 @@ export default function Consultation() {
             </Grid>
             <Grid item xs={12} md={8}>
               <Card sx={{position: 'relative'}}>
-                <CardContent>
+                <CardContent sx={{backgroundColor: "#EFFDF3",}}>
                   <Image src="/videocall.png" alt="Wideorozmowa" width={875} height={600}/>
 
                   <Box sx={{
