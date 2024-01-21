@@ -247,8 +247,8 @@ function DesktopSOSLayout() {
 
 export default function Sos() {
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("xs"), {
-        noSsr: true
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"), {
+        noSsr: false
     });
     useEffect(() => {
         if (document?.body) {
