@@ -1,4 +1,4 @@
-import {Box, Grid, Stack, Tab, Tabs, Typography, useTheme} from "@mui/material";
+import {Box, Button, Grid, Stack, Tab, Tabs, Typography, useTheme} from "@mui/material";
 import * as React from "react";
 import Image from "next/image";
 import Navbar from "@/components/navbar";
@@ -43,8 +43,8 @@ export default function KnowledgeBasePage() {
                                 fontSize: '1.5rem'
                             }}>
                                 <Image
-                                    style={{paddingLeft: 10, paddingRight: 10,}}
-                                    src={"/icons/Book.svg"} width={30} height={30}
+                                    style={{paddingLeft: 0, paddingRight: 10,}}
+                                    src={"/icons/Book.svg"} width={40} height={40}
                                     alt={"Book"}/>
                                 Baza Wiedzy
                             </Typography>
@@ -85,7 +85,7 @@ export default function KnowledgeBasePage() {
                                 color: '#2B5B30',
                                 fontWeight: 'bold',
                                 fontSize: '1.25rem',
-                                my: 1
+                                my: 2
                             }}>Popularne</Typography>
                         <Box sx={{
                             display: 'flex',
@@ -107,7 +107,7 @@ export default function KnowledgeBasePage() {
                                 color: '#2B5B30',
                                 fontWeight: 'bold',
                                 fontSize: '1.25rem',
-                                my: 1
+                                my: 2
                             }}>Najnowsze</Typography>
                         <Box sx={{
                             backgroundColor: {xs: "#EFFDF3", lg: "#D9EDDF"},
@@ -129,7 +129,7 @@ export default function KnowledgeBasePage() {
                                     fontFamily: 'Poppins',
                                     fontWeight: 'bold',
                                     p: 1,
-                                    pb: 0
+                                    pb: 1
                                 }}>{'Spokój - jak go osiągnąć'}</Typography>
                                 <Typography sx={{
                                     fontFamily: 'Poppins',
@@ -191,13 +191,21 @@ export default function KnowledgeBasePage() {
                         }}>
                             <Typography sx={{
                                 textAlign: 'center',
-                                fontSize: '1.3rem',
+                                fontSize: '2rem',
+                                pb: 4,
                                 fontWeight: 'bold',
                                 fontFamily: 'Poppins'
                             }}>Maks</Typography>
-                            <Box sx={{position: 'relative', width: '100%', height: { xs: '130px', lg: '200px', xl: '250px' }, my: 3}}><Image
-                                src={'/articles/article4.png'} alt={'Maks'} layout={'fill'} objectFit={'cover'}/></Box>
-                            <Typography sx={{fontFamily: 'Poppins', textAlign: 'center', fontSize: '0.85rem', pb: 4}}>Jeśli
+                            <Box sx={{
+                                position: 'relative',
+                                width: '100%',
+                                height: {xs: '130px', lg: '200px', xl: '250px'},
+                                my: 3
+                            }}><Image
+                                src={'/undraw_artificial_intelligence.svg'} alt={'Maks'} layout={'fill'}
+                                objectFit={'cover'}/></Box>
+                            <Typography
+                                sx={{fontFamily: 'Poppins', pt: 4, textAlign: 'center', fontSize: '1rem', pb: 4}}>Jeśli
                                 masz
                                 jakieś pytania na które nie znalazłeś odpowiedzi w artykułach służę pomocą</Typography>
                         </Box>
@@ -207,8 +215,10 @@ export default function KnowledgeBasePage() {
                             border: '1px solid #00350D',
                             backgroundColor: '#EFFDF3',
                             padding: {xs: '5px 10px', lg: '7px 15px'},
-                            marginBottom: '5px'
+                            marginBottom: '5px',
+
                         }} type={'text'} placeholder={'Zadaj pytanie'}/>
+                        <Button>Wyślij</Button>
                     </Box>
                 </Box>
             </Box>

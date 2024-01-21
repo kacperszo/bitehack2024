@@ -54,6 +54,16 @@ export default function FeelingJournal() {
         noSsr: false
     });
 
+    const InfoCard = ({children, sx}) => {
+        const theme = useTheme();
+
+        return (<Box sx={{
+            backgroundColor: "#EFFDF3", padding: 1.5, m: 1, borderRadius: 2, ...sx
+        }}>
+            {children}
+        </Box>)
+    }
+
     const events = [
         {
             title: 'good',
@@ -254,18 +264,23 @@ export default function FeelingJournal() {
                 }}
             >
                 <Stack sx={{mt: 4, px: 5}} textAlign="left">
-                    <Stack direction="row">
-                        <Box flexGrow={1}>
-                            <Typography fontWeight={600} variant="h4">
-                                <Image
-                                    style={{paddingLeft: 10, paddingRight: 10,}}
-                                    src={"/icons/Book.svg"} width={30} height={30}
-                                    alt={"Book"}/>
-                                Dziennik samopoczucia
-                            </Typography>
-                        </Box>
-                        <Box>
-                            <Button variant="contained" onClick={() => setCreateOpen(true)}>Dodaj</Button>
+                    <Stack direction="row" justifyContent="space-between">
+                        <InfoCard>
+                            <Box>
+                                <Typography fontWeight={600} variant={"h6"} sx={{
+                                    display: 'flex', alignItems: 'center', fontSize: '1.5rem'
+                                }}>
+                                    <Image
+                                        style={{paddingLeft: 0, paddingRight: 10,}}
+                                        src={"/icons/Notebook.svg"} width={40} height={40}
+                                        alt={"Book"}/>
+                                    Dziennik
+                                </Typography>
+                            </Box>
+                        </InfoCard>
+                        <Box sx={{transform: "translateY(25px)"}}>
+                            <Button onClick={() => setIsNewDataModelOpen(true)} height="40px" variant="contained">Dodaj nowy
+                                wpis</Button>
                         </Box>
                     </Stack>
 

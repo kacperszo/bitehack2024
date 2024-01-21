@@ -1,7 +1,7 @@
 import {Box, Button, Card, CardContent, Grid, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import Layout from "@/components/layout";
 
 const InfoCard = ({children, sx}) => {
@@ -118,11 +118,13 @@ function DesktopSOSLayout() {
     return <Stack direction={"column"}>
         <InfoCard>
             <Box>
-                <Typography fontWeight={600} variant={"h6"}><
-                    Image
-                    style={{paddingLeft: 10, paddingRight: 10,}}
-                    src={"/icons/Warning.svg"} width={30} height={30}
-                    alt={""}/>
+                <Typography fontWeight={600} variant={"h6"} sx={{
+                    display: 'flex', alignItems: 'center', fontSize: '1.5rem'
+                }}>
+                    <Image
+                        style={{paddingLeft: 0, paddingRight: 10,}}
+                        src={"/icons/Warning.svg"} width={40} height={40}
+                        alt={"Book"}/>
                     SOS! Potrzebuję nagłej pomocy
                 </Typography>
             </Box>
