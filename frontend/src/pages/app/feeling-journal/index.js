@@ -174,50 +174,75 @@ export default function FeelingJournal() {
         <Layout>
             <Navbar/>
             <Dialog fullWidth maxWidth="sm" open={createOpen} onClose={handleDetailsClose}>
-                <DialogTitle sx={{backgroundColor: "white"}}>Jak się dzisiaj czujesz?</DialogTitle>
-                <DialogContent sx={{backgroundColor: "white"}}>
-                    <Stack direction="row" spacing={1}>
-                        <Box sx={{cursor: 'pointer'}}>
-                            {matchWellbeingIcon('very bad')}
-                        </Box>
-                        <Box sx={{cursor: 'pointer'}}>
-                            {matchWellbeingIcon('bad')}
-                        </Box>
-                        <Box sx={{cursor: 'pointer'}}>
-                            {matchWellbeingIcon('neutral')}
-                        </Box>
-                        <Box sx={{cursor: 'pointer'}}>
-                            {matchWellbeingIcon('good')}
-                        </Box>
-                        <Box sx={{cursor: 'pointer'}}>
-                            {matchWellbeingIcon('very good')}
-                        </Box>
-                    </Stack>
-                    <Stack sx={{mt: 2}} spacing={2}>
+                <DialogContent sx={{backgroundColor: "#D9EDDF"}}>
+                    <Box sx={{
+                        borderRadius: 10,
+                        backgroundColor: "#EFFDF3",
+                        p: 2,
+                        textAlign: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}>
+                        <Typography sx={{mb: 4}} variant={"h6"}>Jak sie dziś czujesz?</Typography>
+                        <Stack direction="row" spacing={5}>
+                            <Box sx={{cursor: 'pointer'}}>
+                                {matchWellbeingIcon('very bad')}
+                            </Box>
+                            <Box sx={{cursor: 'pointer'}}>
+                                {matchWellbeingIcon('bad')}
+                            </Box>
+                            <Box sx={{cursor: 'pointer'}}>
+                                {matchWellbeingIcon('neutral')}
+                            </Box>
+                            <Box sx={{cursor: 'pointer'}}>
+                                {matchWellbeingIcon('good')}
+                            </Box>
+                            <Box sx={{cursor: 'pointer'}}>
+                                {matchWellbeingIcon('very good')}
+                            </Box>
+                        </Stack>
+                    </Box>
+
+                    <Box sx={{
+                        borderRadius: 10,
+                        mt: 2,
+                        backgroundColor: "#EFFDF3",
+                        p: 2,
+                        textAlign: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}>
+                        <Typography variant={"h6"}>Napisz co Cię dzisiaj spotkało</Typography>
                         <TextField
-                            label="Jak się dzisiaj czułeś?"
+                            sx={{my: 3, width: 300}}
+                            variant={"outlined"}
+
+                            label="Opisz swój dzień"
                         />
-                        <TextField
-                            label="Jakie były dzisiaj pozytywne wydarzenia?"
-                        />
-                        <TextField
-                            label="Jakie były negatywy dzisiejszego dnia?"
-                        />
-                    </Stack>
+                        <Button variant="contained" onClick={handleDetailsClose}>Dodaj opis</Button>
+                    </Box>
                 </DialogContent>
-                <DialogActions sx={{backgroundColor: "white"}}>
-                    <Button variant="outlined" onClick={handleDetailsClose}>Zamknij</Button>
-                    <Button variant="contained" onClick={handleDetailsClose}>Zapisz</Button>
-                </DialogActions>
             </Dialog>
             <Dialog fullWidth maxWidth="xs" open={detailsOpen} onClose={handleDetailsClose}>
-                <DialogContent sx={{backgroundColor: "white"}}>
-                    {matchWellbeingIcon(selectedEvent?.title)}
-                    <Typography variant="body2">Ogólne samopoczucie: {selectedEvent?.extendedProps.desc1}</Typography>
-                    <Typography variant="body2">Jakie były pozytywne
-                        rzeczy: {selectedEvent?.extendedProps.desc2}</Typography>
-                    <Typography variant="body2">Jakie były negatywne
-                        rzeczy: {selectedEvent?.extendedProps.desc3}</Typography>
+                <DialogContent sx={{backgroundColor: "#D9EDDF"}}>
+                    <Box sx={{
+                        borderRadius: 10,
+                        mt: 2,
+                        backgroundColor: "#EFFDF3",
+                        p: 2,
+                        textAlign: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}>
+                        <Typography variant="h6">Tego dnia...</Typography>
+                        <Typography variant="body1"> {selectedEvent?.extendedProps.desc2}</Typography>
+                    </Box>
                 </DialogContent>
             </Dialog>
             <Box
@@ -251,7 +276,7 @@ export default function FeelingJournal() {
                                 }}
                                 views={{
                                     timeGridMonth: {
-                                        duration: isMobile ? { days: 5 } : { days: 7 },
+                                        duration: isMobile ? {days: 5} : {days: 7},
                                     },
                                 }}
                                 plugins={[dayGridPlugin]}
