@@ -12,7 +12,7 @@ import {
   IconButton,
   Stack,
   TextField,
-  Typography
+  Typography, useTheme
 } from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
@@ -29,6 +29,16 @@ export default function Consultation() {
 
   function handleClose() {
     setOpen(false);
+  }
+
+  const InfoCard = ({children, sx}) => {
+    const theme = useTheme();
+
+    return (<Box sx={{
+      backgroundColor: "#EFFDF3", padding: 1.5, m: 3, borderRadius: 2, ...sx
+    }}>
+      {children}
+    </Box>)
   }
 
   return (
@@ -62,32 +72,46 @@ export default function Consultation() {
           </DialogActions>
         </Dialog>
         <Stack sx={{mt: 4, px: 5}} textAlign="left">
-          <Stack direction="row">
-            <Box flexGrow={1}>
-              <Typography fontWeight={600} variant="h4">
-                <Image
-                    style={{paddingLeft: 10, paddingRight: 10,}}
-                    src={"/icons/Book.svg"} width={30} height={30}
-                    alt={"Book"}/>
-                Konsultacja ze specjalistą
-              </Typography>
-            </Box>
-          </Stack>
+          <InfoCard>
+          <Box>
+            <Typography fontWeight={600} variant={"h4"}><
+                Image
+                style={{paddingLeft: 10, paddingRight: 10,}}
+                src={"/icons/Camera.svg"} width={30} height={30}
+                alt={""}/>
+              Konsultacja ze specjalistą
+            </Typography>
+          </Box>
+        </InfoCard>
 
           <Grid container justifyContent="center" sx={{mt: 4, pb: 5}} spacing={2}>
             <Grid item xs={12}>
-              <Card sx={{position: 'relative'}}>
-                <CardContent>
-                  <Typography variant="h5">Informacje</Typography>
-                  <Typography variant="body2">Jeżeli posiadasz już zamówioną konsultację na aktualną godzinę, pojawi się
-                    ona automatycznie po prawej stronie. Jeżeli jesteś przed czasem, możesz zostać na tej stronie. Nasz
-                    specjalista dołączy do Ciebie a rozmowa uruchomi się automatycznie.</Typography>
-                  <Typography variant="body2" sx={{mt: 1.5}}>Możesz zamówić następną konsultację już teraz przez nasz
-                    formularz.</Typography>
-                  <Button variant="contained" size="small" sx={{mt: 2}} onClick={() => setOpen(true)}>Umów
-                    konsultację</Button>
-                </CardContent>
-              </Card>
+              {/*<Card sx={{position: 'relative'}}>*/}
+              {/*  <CardContent>*/}
+              {/*    <Typography variant="h5">Informacje</Typography>*/}
+              {/*    <Typography variant="body2">Jeżeli posiadasz już zamówioną konsultację na aktualną godzinę, pojawi się*/}
+              {/*      ona automatycznie po prawej stronie. Jeżeli jesteś przed czasem, możesz zostać na tej stronie. Nasz*/}
+              {/*      specjalista dołączy do Ciebie a rozmowa uruchomi się automatycznie.</Typography>*/}
+              {/*    <Typography variant="body2" sx={{mt: 1.5}}>Możesz zamówić następną konsultację już teraz przez nasz*/}
+              {/*      formularz.</Typography>*/}
+              {/*    <Button variant="contained" size="small" sx={{mt: 2}} onClick={() => setOpen(true)}>Umów*/}
+              {/*      konsultację</Button>*/}
+              {/*  </CardContent>*/}
+              {/*</Card>*/}
+              <InfoCard>
+                <Box sx={{px: 2}}>
+                  <Typography fontWeight={600} sx={{py: 3}} variant={"h6"} textAlign={"center"}>Informacje</Typography>
+                  <Typography>
+                    Jeżeli posiadasz już zamówioną konsultację na aktualną godzinę, pojawi się ona automatycznie po prawej stronie. Jeżeli jesteś przed czasem, możesz zostać na tej stronie. Nasz
+                    specjalista dołączy do Ciebie a rozmowa uruchomi się automatycznie.
+                  </Typography>
+                  <Box sx={{
+                    textAlign: "center", py: 3
+                  }}>
+                    <Button sx={{mt: 3, borderRadius: "10px", px: 3, py: 1}} onClick={() => setOpen(true)} variant={"contained"}>Umów konsultację</Button>
+                  </Box>
+                </Box>
+              </InfoCard>
             </Grid>
             <Grid item xs={12}>
               <Card sx={{position: 'relative'}}>
@@ -99,11 +123,20 @@ export default function Consultation() {
                     bottom: 100,
                     left: 30,
                     width: 120,
+                    display:"flex",
+                    alignContent:"center",
+                    justifyItems:"center",
                     height: 90,
                     backgroundColor: 'background.paper',
                     borderRadius: 1
                   }}>
+                    <Box sx={{
+                        display:"flex",
+                        alignContent:"center",
+                        justifyItems:"center",
+                    }}>
                     <Image src="/your-camera-feed.jpg" alt="Kamerka" layout="fill" objectFit="cover"/>
+                    </Box>
                   </Box>
 
                   <Stack direction="row" spacing={2} justifyContent="center" sx={{mt: 2}}>

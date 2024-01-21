@@ -274,12 +274,12 @@ export default function FeelingJournal() {
                                         style={{paddingLeft: 0, paddingRight: 10,}}
                                         src={"/icons/Notebook.svg"} width={40} height={40}
                                         alt={"Book"}/>
-                                    Dziennik
+                                    Dziennik Samopoczucia
                                 </Typography>
                             </Box>
                         </InfoCard>
                         <Box sx={{transform: "translateY(25px)"}}>
-                            <Button onClick={() => setIsNewDataModelOpen(true)} height="40px" variant="contained">Dodaj nowy
+                            <Button onClick={() => setCreateOpen(true)} height="40px" variant="contained">Dodaj nowy
                                 wpis</Button>
                         </Box>
                     </Stack>

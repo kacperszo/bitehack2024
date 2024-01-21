@@ -197,7 +197,7 @@ function DesktopSOSLayout() {
                 <Typography fontWeight={600} sx={{py: 3, pl: 2}} variant={"h6"} textAlign={"left"}>Czat ze specjalistą
                 </Typography>
                 <Box sx={{px: 2, display: "flex", justifyContent: 'space-between'}}>
-                    <Stack direction={"column"}>
+                    <Stack direction={"column"} justifyContent="space-between">
                         <Typography>
                             Jeśli nie jesteś gotowy na rozmowę z ekspertem, napisz do niego wiadomość
                         </Typography>
