@@ -3,26 +3,26 @@ import * as React from "react";
 import Image from 'next/image'
 
 export default function Article({article, sx}) {
-    const theme = useTheme();
+  const theme = useTheme();
 
-    const {image, title, author} = article
+  const {image, title, author} = article
 
-    return (<Box sx={{
-        backgroundColor: { xs: "#EFFDF3", lg: "#D9EDDF" },
-        borderRadius: '15px'
+  return (<Box sx={{
+    backgroundColor: {xs: "#EFFDF3", lg: "#D9EDDF"},
+    borderRadius: '15px'
+  }}>
+    <Box sx={{
+      position: 'relative',
+      width: '250px',
+      height: '150px',
+      ...sx
     }}>
-        <Box sx={{
-            position: 'relative',
-            width: '250px',
-            height: '150px',
-            ...sx
-        }}>
-            <Image src={`/articles/${image}`} alt={title} layout={'fill'} objectFit={'cover'}
-                   style={{borderRadius: '15px 15px 0 0'}}/>
-        </Box>
-        <Box>
-            <Typography sx={{color: '#00350D', fontFamily: 'Poppins', fontWeight: 'bold', p: 1, pb: 0}}>{title}</Typography>
-            <Typography sx={{color: '#2B5B30', fontFamily: 'Poppins', p: 1, pt: 0}}>{author}</Typography>
-        </Box>
-    </Box>)
+      <Image src={`/articles/${image}`} alt={title} layout={'fill'} objectFit={'cover'}
+             style={{borderRadius: '15px 15px 0 0'}}/>
+    </Box>
+    <Box>
+      <Typography sx={{color: '#00350D', fontFamily: 'Poppins', fontWeight: 'bold', p: 1, pb: 0}}>{title}</Typography>
+      <Typography sx={{color: '#2B5B30', fontFamily: 'Poppins', p: 1, pt: 0}}>{author}</Typography>
+    </Box>
+  </Box>)
 }

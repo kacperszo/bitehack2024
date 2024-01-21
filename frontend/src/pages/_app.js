@@ -15,25 +15,25 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 //TODO move it to separate file
 const theme = createTheme({
-    palette: {
-        primary: {
-            light: '#D9EDDF',
-            main: '#00350D',
-            dark: '#00350D',
-            contrastText: '#fff',
-        },
-        secondary: teal,
-        background: '#EFFDF3'
+  palette: {
+    primary: {
+      light: '#D9EDDF',
+      main: '#00350D',
+      dark: '#00350D',
+      contrastText: '#fff',
     },
+    secondary: teal,
+    background: '#EFFDF3'
+  },
 });
 export default function App({Component, pageProps}) {
-    return (
-        <ThemeProvider theme={theme}>
-            <ApolloProvider client={client}>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <Component {...pageProps} />
-                </LocalizationProvider>
-            </ApolloProvider>
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider theme={theme}>
+      <ApolloProvider client={client}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <Component {...pageProps} />
+        </LocalizationProvider>
+      </ApolloProvider>
+    </ThemeProvider>
+  )
 }
