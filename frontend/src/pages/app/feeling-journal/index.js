@@ -22,6 +22,7 @@ import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import {useState} from "react";
+import Layout from "@/components/layout";
 
 export const matchWellbeingIcon = (type) => {
   const iconStyle = {
