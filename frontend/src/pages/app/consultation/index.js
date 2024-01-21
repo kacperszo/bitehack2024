@@ -12,7 +12,7 @@ import {
   IconButton,
   Stack,
   TextField,
-  Typography, useTheme
+  Typography, useMediaQuery, useTheme
 } from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
@@ -30,6 +30,11 @@ export default function Consultation() {
   function handleClose() {
     setOpen(false);
   }
+  const theme = useTheme();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"), {
+    noSsr: false
+  });
 
   const InfoCard = ({children, sx}) => {
     const theme = useTheme();
@@ -86,19 +91,7 @@ export default function Consultation() {
 
           <Grid container justifyContent="center" sx={{mt: 4, pb: 5}} spacing={2}>
             <Grid item xs={12}>
-              {/*<Card sx={{position: 'relative'}}>*/}
-              {/*  <CardContent>*/}
-              {/*    <Typography variant="h5">Informacje</Typography>*/}
-              {/*    <Typography variant="body2">Jeżeli posiadasz już zamówioną konsultację na aktualną godzinę, pojawi się*/}
-              {/*      ona automatycznie po prawej stronie. Jeżeli jesteś przed czasem, możesz zostać na tej stronie. Nasz*/}
-              {/*      specjalista dołączy do Ciebie a rozmowa uruchomi się automatycznie.</Typography>*/}
-              {/*    <Typography variant="body2" sx={{mt: 1.5}}>Możesz zamówić następną konsultację już teraz przez nasz*/}
-              {/*      formularz.</Typography>*/}
-              {/*    <Button variant="contained" size="small" sx={{mt: 2}} onClick={() => setOpen(true)}>Umów*/}
-              {/*      konsultację</Button>*/}
-              {/*  </CardContent>*/}
-              {/*</Card>*/}
-              <InfoCard>
+              <InfoCard sx={!isMobile?({backgroundColor:theme.palette.primary.light}):null}>
                 <Box sx={{px: 2}}>
                   <Typography fontWeight={600} sx={{py: 3}} variant={"h6"} textAlign={"center"}>Informacje</Typography>
                   <Typography>
@@ -116,7 +109,8 @@ export default function Consultation() {
             <Grid item xs={12}>
               <Card sx={{position: 'relative'}}>
                 <CardContent sx={{backgroundColor: "#EFFDF3",}}>
-                  <Image src="/videocall.png" alt="Wideorozmowa" width={875} height={600}/>
+
+                  <Image style={{marginLeft:"auto", marginRight:"auto", display:"block"}} src="/videocall.png" alt="Wideorozmowa" width={875} height={600}/>
 
                   <Box sx={{
                     position: 'absolute',
@@ -135,7 +129,6 @@ export default function Consultation() {
                         alignContent:"center",
                         justifyItems:"center",
                     }}>
-                    <Image src="/your-camera-feed.jpg" alt="Kamerka" layout="fill" objectFit="cover"/>
                     </Box>
                   </Box>
 
