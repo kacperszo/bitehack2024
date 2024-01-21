@@ -79,7 +79,8 @@ export default function Layout({children}) {
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: 4,
-                                        paddingX: 4,
+                                        paddingLeft: 1,
+                                        paddingRight: 2,
                                         fontSize: 20,
                                         textWrap: 'wrap',
                                     }}>

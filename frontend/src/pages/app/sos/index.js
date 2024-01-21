@@ -1,4 +1,4 @@
-import {Box, Button, Card, CardContent, Grid, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
+import {Box, Button, Grid, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
 import {useEffect} from "react";
@@ -143,12 +143,12 @@ function DesktopSOSLayout() {
                                 skorzystaj z
                                 numeru alarmowego.
                                 Oto niezbędne informacje które musisz podać:
-                                <ul>
-                                    <li>Imię i nazwisko</li>
-                                    <li>Miejsce w którym przebywasz</li>
-                                    <li>Opisz co dokładnie się dzieje</li>
-                                </ul>
                             </Typography>
+                            <ul>
+                                <li>Imię i nazwisko</li>
+                                <li>Miejsce w którym przebywasz</li>
+                                <li>Opisz co dokładnie się dzieje</li>
+                            </ul>
                             <Button sx={{mt: 3, borderRadius: "10px", width: 160, px: 1, py: 1}}
                                     variant={"contained"}>Zadzwoń</Button>
                         </Stack>

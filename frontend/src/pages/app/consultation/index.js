@@ -75,7 +75,7 @@ export default function Consultation() {
           </Stack>
 
           <Grid container justifyContent="center" sx={{mt: 4, pb: 5}} spacing={2}>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12}>
               <Card sx={{position: 'relative'}}>
                 <CardContent>
                   <Typography variant="h5">Informacje</Typography>
@@ -89,7 +89,7 @@ export default function Consultation() {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12}>
               <Card sx={{position: 'relative'}}>
                 <CardContent sx={{backgroundColor: "#EFFDF3",}}>
                   <Image src="/videocall.png" alt="Wideorozmowa" width={875} height={600}/>

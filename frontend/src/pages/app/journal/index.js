@@ -3,12 +3,9 @@ import Navbar from "@/components/navbar";
 import dayGridPlugin from '@fullcalendar/daygrid'
 import FullCalendar from "@fullcalendar/react";
 import plLocale from '@fullcalendar/core/locales/pl';
-
-import DangerousIcon from '@mui/icons-material/Dangerous';
 import React, {useState} from "react";
 import Layout from "@/components/layout";
 import Image from "next/image";
-import {matchWellbeingIcon} from "@/pages/app/feeling-journal";
 
 export const getIcon = () => {
     const iconStyle = {
@@ -118,13 +115,13 @@ export default function Journal() {
                     <Box flexGrow={1}>
                         <Typography fontWeight={600} variant="h4">
                             <Image
-                                style={{paddingLeft: 10, paddingRight: 10,}}
-                                src={"/icons/Book.svg"} width={30} height={30}
-                                alt={"Book"}/>
+                              style={{paddingLeft: 10, paddingRight: 10,}}
+                              src={"/icons/Book.svg"} width={30} height={30}
+                              alt={"Book"}/>
                             Dziennik
                         </Typography>
                     </Box>
-                    <Button onClick={() => setIsNewDataModelOpen(true)} variant="contained">Dodaj nowy wpis</Button>
+                    <Button onClick={() => setIsNewDataModelOpen(true)} variant="contained" size="small">Dodaj</Button>
                 </Stack>
 
                 <Card sx={{mt: 4, mb: 5}}>
