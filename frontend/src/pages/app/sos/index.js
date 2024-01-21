@@ -1,7 +1,7 @@
 import {Box, Button, Grid, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import Layout from "@/components/layout";
 
 const InfoCard = ({children, sx}) => {
@@ -101,7 +101,7 @@ function MobileSOSLayout() {
                         Jeśli <strong>czujesz się zdezorientowany i zestresowany</strong>, spróbuj się uspokoić.
                         Oddychaj powoli i głęboko, skupiając się na swoim oddechu. </Typography>
                     <Box sx={{
-                        textAlign: "center", py: 3
+                        textAlign: "center", py: 3,
                     }}>
                         <Image src={"/undraw_meditation.png"} width={160} height={150} alt={""}/><br/>
                         <Button sx={{mt: 3, borderRadius: "10px", px: 3, py: 1}}
@@ -118,11 +118,13 @@ function DesktopSOSLayout() {
     return <Stack direction={"column"}>
         <InfoCard>
             <Box>
-                <Typography fontWeight={600} variant={"h6"}><
-                    Image
-                    style={{paddingLeft: 10, paddingRight: 10,}}
-                    src={"/icons/Warning.svg"} width={30} height={30}
-                    alt={""}/>
+                <Typography fontWeight={600} variant={"h6"} sx={{
+                    display: 'flex', alignItems: 'center', fontSize: '1.5rem'
+                }}>
+                    <Image
+                        style={{paddingLeft: 0, paddingRight: 10,}}
+                        src={"/icons/Warning.svg"} width={40} height={40}
+                        alt={"Book"}/>
                     SOS! Potrzebuję nagłej pomocy
                 </Typography>
             </Box>
@@ -136,7 +138,7 @@ function DesktopSOSLayout() {
                     <Typography fontWeight={600} sx={{py: 3, pl: 2}} variant={"h6"} textAlign={"left"}>Telefon na numer
                         alarmowy
                     </Typography>
-                    <Box sx={{px: 2, display: "flex"}}>
+                    <Box sx={{px: 2, display: "flex", justifyContent: 'space-between'}}>
                         <Stack direction={"column"}>
                             <Typography>
                                 Jeżeli czujesz się bardzo źle lub jesteś w sytuacji zagrażającej życiu, nie czekaj
@@ -170,7 +172,7 @@ function DesktopSOSLayout() {
                     <Typography fontWeight={600} sx={{py: 3, pl: 2}} variant={"h6"} textAlign={"left"}>Wideo rozmowa ze
                         specjalistą
                     </Typography>
-                    <Box sx={{px: 2, display: "flex"}}>
+                    <Box sx={{px: 2, display: "flex", justifyContent: 'space-between'}}>
                         <Stack direction={"column"}>
                             <Typography>
                                 Pamiętaj że nie jesteś sam, skorzystaj z możliwość <strong>wizyty online w wirtualnym
@@ -183,9 +185,7 @@ function DesktopSOSLayout() {
                         <Box sx={{
                             textAlign: "center", py: 3
                         }}>
-
                             <Image src={"/undraw_group_video.png"} width={160} height={150} alt={""}/><br/>
-
                         </Box>
                     </Box>
                 </InfoCard>
@@ -196,7 +196,7 @@ function DesktopSOSLayout() {
             }}>
                 <Typography fontWeight={600} sx={{py: 3, pl: 2}} variant={"h6"} textAlign={"left"}>Czat ze specjalistą
                 </Typography>
-                <Box sx={{px: 2, display: "flex"}}>
+                <Box sx={{px: 2, display: "flex", justifyContent: 'space-between'}}>
                     <Stack direction={"column"}>
                         <Typography>
                             Jeśli nie jesteś gotowy na rozmowę z ekspertem, napisz do niego wiadomość
@@ -222,7 +222,7 @@ function DesktopSOSLayout() {
                     bazę
                     wiedzy
                 </Typography>
-                <Box sx={{px: 2, display: "flex"}}>
+                <Box sx={{px: 2, display: "flex", justifyContent: 'space-between'}}>
                     <Stack direction={"column"}>
                         <Typography>
                             Jeśli <strong>czujesz się zdezorientowany i zestresowany</strong>, spróbuj się uspokoić.

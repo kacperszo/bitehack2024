@@ -100,7 +100,7 @@ export default function Consultation() {
                     left: 30,
                     width: 120,
                     height: 90,
-                    bgcolor: 'background.paper',
+                    backgroundColor: 'background.paper',
                     borderRadius: 1
                   }}>
                     <Image src="/your-camera-feed.jpg" alt="Kamerka" layout="fill" objectFit="cover"/>

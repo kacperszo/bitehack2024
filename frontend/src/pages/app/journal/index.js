@@ -1,11 +1,14 @@
-import {Box, Button, Card, CardContent, Dialog, DialogContent, Stack, Typography} from "@mui/material";
+import {Box, Button, Card, CardContent, Dialog, DialogContent, Stack, Typography, useTheme} from "@mui/material";
 import Navbar from "@/components/navbar";
 import dayGridPlugin from '@fullcalendar/daygrid'
 import FullCalendar from "@fullcalendar/react";
 import plLocale from '@fullcalendar/core/locales/pl';
+
+import DangerousIcon from '@mui/icons-material/Dangerous';
 import React, {useState} from "react";
 import Layout from "@/components/layout";
 import Image from "next/image";
+import {matchWellbeingIcon} from "@/pages/app/feeling-journal";
 
 export const getIcon = () => {
     const iconStyle = {
@@ -13,6 +16,16 @@ export const getIcon = () => {
     };
     return <Image width={40} height={40} src={"/face5.png"}/>;
 
+}
+
+const InfoCard = ({children, sx}) => {
+    const theme = useTheme();
+
+    return (<Box sx={{
+        backgroundColor: "#EFFDF3", padding: 1.5, m: 1, borderRadius: 2, ...sx
+    }}>
+        {children}
+    </Box>)
 }
 
 export default function Journal() {
@@ -111,26 +124,31 @@ export default function Journal() {
             }}
         >
             <Stack sx={{mt: 4, px: 5}} textAlign="left">
-                <Stack direction="row">
-                    <Box flexGrow={1}>
-                        <Typography fontWeight={600} variant="h4">
-                            <Image
-                              style={{paddingLeft: 10, paddingRight: 10,}}
-                              src={"/icons/Book.svg"} width={30} height={30}
-                              alt={"Book"}/>
-                            Dziennik
-                        </Typography>
+                <Stack direction="row" justifyContent="space-between">
+                    <InfoCard>
+                        <Box>
+                            <Typography fontWeight={600} variant={"h6"} sx={{
+                                display: 'flex', alignItems: 'center', fontSize: '1.5rem'
+                            }}>
+                                <Image
+                                    style={{paddingLeft: 0, paddingRight: 10,}}
+                                    src={"/icons/Notebook.svg"} width={40} height={40}
+                                    alt={"Book"}/>
+                                Dziennik
+                            </Typography>
+                        </Box>
+                    </InfoCard>
+                    <Box sx={{transform: "translateY(25px)"}}>
+                        <Button onClick={() => setIsNewDataModelOpen(true)} height="40px" variant="contained">Dodaj nowy
+                            wpis</Button>
                     </Box>
-                    <Button onClick={() => setIsNewDataModelOpen(true)} variant="contained" size="small">Dodaj</Button>
                 </Stack>
 
                 <Card sx={{mt: 4, mb: 5}}>
                     <CardContent>
                         <FullCalendar
                             headerToolbar={{
-                                left: 'prev',
-                                center: 'title',
-                                right: 'next',
+                                left: 'prev', center: 'title', right: 'next',
                             }}
                             height={'75vh'}
                             plugins={[dayGridPlugin]}
