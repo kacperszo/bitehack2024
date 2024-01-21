@@ -12,6 +12,7 @@ import {
     Typography
 } from "@mui/material";
 import Navbar from "@/components/navbar";
+import Image from "next/image"
 import dayGridPlugin from '@fullcalendar/daygrid'
 import FullCalendar from "@fullcalendar/react";
 import plLocale from '@fullcalendar/core/locales/pl';
@@ -21,7 +22,7 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import {useState} from "react";
+import React, {useState} from "react";
 import Layout from "@/components/layout";
 
 export const matchWellbeingIcon = (type) => {
@@ -31,17 +32,17 @@ export const matchWellbeingIcon = (type) => {
 
     switch (type) {
         case 'very bad':
-            return <SentimentVeryDissatisfiedIcon style={{...iconStyle, color: 'darkred'}}/>;
+            return <Image width={40} height={40} src={"/face1.png"}/>;
         case 'bad':
-            return <SentimentDissatisfiedIcon style={{...iconStyle, color: 'red'}}/>;
+            return <Image width={40} height={40} src={"/face2.png"}/>;
         case 'neutral':
-            return <SentimentNeutralIcon style={{...iconStyle, color: 'gray'}}/>;
+            return <Image width={40} height={40} src={"/face3.png"}/>;
         case 'good':
-            return <SentimentSatisfiedIcon style={{...iconStyle, color: 'lightgreen'}}/>;
+            return <Image width={40} height={40} src={"/face4.png"}/>;
         case 'very good':
-            return <SentimentVerySatisfiedIcon style={{...iconStyle, color: 'green'}}/>;
+            return <Image width={40} height={40} src={"/face5.png"}/>;
         default:
-            return <SentimentNeutralIcon style={iconStyle}/>;
+            return <Image width={40} height={40} src={"/face3.png"}/>;
     }
 }
 
@@ -135,9 +136,15 @@ export default function FeelingJournal() {
 
     function renderEventContent(eventInfo) {
         return (
-            <>
+            <Box sx={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "center",
+                textAlign: "center",
+                alignItem: "center"
+            }}>
                 {matchWellbeingIcon(eventInfo.event.title)}
-            </>
+            </Box>
         )
     }
 

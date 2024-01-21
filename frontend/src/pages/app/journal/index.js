@@ -85,14 +85,19 @@ export default function Journal() {
 
     function renderEventContent(eventInfo) {
         return (
-            <>
+            <Box sx={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "center",
+                alignItem: "center",
+            }}>
                 {getIcon()}
                 <p>
                     {
                         eventInfo.event.title
                     }
                 </p>
-            </>
+            </Box>
         )
     }
 
