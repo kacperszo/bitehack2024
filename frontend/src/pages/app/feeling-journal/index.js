@@ -9,9 +9,10 @@ import {
     DialogTitle,
     Stack,
     TextField,
-    Typography
+    Typography, useMediaQuery, useTheme
 } from "@mui/material";
 import Navbar from "@/components/navbar";
+import Image from "next/image"
 import dayGridPlugin from '@fullcalendar/daygrid'
 import FullCalendar from "@fullcalendar/react";
 import plLocale from '@fullcalendar/core/locales/pl';
@@ -21,7 +22,7 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import {useState} from "react";
+import React, {useState} from "react";
 import Layout from "@/components/layout";
 
 export const matchWellbeingIcon = (type) => {
@@ -31,21 +32,28 @@ export const matchWellbeingIcon = (type) => {
 
     switch (type) {
         case 'very bad':
-            return <SentimentVeryDissatisfiedIcon style={{...iconStyle, color: 'darkred'}}/>;
+            return <Image width={40} height={40} src={"/face1.png"}/>;
         case 'bad':
-            return <SentimentDissatisfiedIcon style={{...iconStyle, color: 'red'}}/>;
+            return <Image width={40} height={40} src={"/face2.png"}/>;
         case 'neutral':
-            return <SentimentNeutralIcon style={{...iconStyle, color: 'gray'}}/>;
+            return <Image width={40} height={40} src={"/face3.png"}/>;
         case 'good':
-            return <SentimentSatisfiedIcon style={{...iconStyle, color: 'lightgreen'}}/>;
+            return <Image width={40} height={40} src={"/face4.png"}/>;
         case 'very good':
-            return <SentimentVerySatisfiedIcon style={{...iconStyle, color: 'green'}}/>;
+            return <Image width={40} height={40} src={"/face5.png"}/>;
         default:
-            return <SentimentNeutralIcon style={iconStyle}/>;
+            return <Image width={40} height={40} src={"/face3.png"}/>;
     }
 }
 
 export default function FeelingJournal() {
+
+    const theme = useTheme();
+
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"), {
+        noSsr: false
+    });
+
     const events = [
         {
             title: 'good',
@@ -136,11 +144,11 @@ export default function FeelingJournal() {
     function renderEventContent(eventInfo) {
         return (
             <Box sx={{
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
+                display: "flex",
+                width: "100%",
+                justifyContent: "center",
+                textAlign: "center",
+                alignItem: "center"
             }}>
                 {matchWellbeingIcon(eventInfo.event.title)}
             </Box>
@@ -166,8 +174,8 @@ export default function FeelingJournal() {
         <Layout>
             <Navbar/>
             <Dialog fullWidth maxWidth="sm" open={createOpen} onClose={handleDetailsClose}>
-                <DialogTitle>Jak się dzisiaj czujesz?</DialogTitle>
-                <DialogContent>
+                <DialogTitle sx={{backgroundColor: "white"}}>Jak się dzisiaj czujesz?</DialogTitle>
+                <DialogContent sx={{backgroundColor: "white"}}>
                     <Stack direction="row" spacing={1}>
                         <Box sx={{cursor: 'pointer'}}>
                             {matchWellbeingIcon('very bad')}
@@ -197,13 +205,13 @@ export default function FeelingJournal() {
                         />
                     </Stack>
                 </DialogContent>
-                <DialogActions>
+                <DialogActions sx={{backgroundColor: "white"}}>
                     <Button variant="outlined" onClick={handleDetailsClose}>Zamknij</Button>
                     <Button variant="contained" onClick={handleDetailsClose}>Zapisz</Button>
                 </DialogActions>
             </Dialog>
             <Dialog fullWidth maxWidth="xs" open={detailsOpen} onClose={handleDetailsClose}>
-                <DialogContent>
+                <DialogContent sx={{backgroundColor: "white"}}>
                     {matchWellbeingIcon(selectedEvent?.title)}
                     <Typography variant="body2">Ogólne samopoczucie: {selectedEvent?.extendedProps.desc1}</Typography>
                     <Typography variant="body2">Jakie były pozytywne
@@ -212,7 +220,8 @@ export default function FeelingJournal() {
                         rzeczy: {selectedEvent?.extendedProps.desc3}</Typography>
                 </DialogContent>
             </Dialog>
-            <Box sx={{
+            <Box
+                sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     backgroundSize: 'cover',
@@ -231,15 +240,27 @@ export default function FeelingJournal() {
                         </Box>
                     </Stack>
 
+
                     <Card sx={{mt: 4, mb: 5}}>
                         <CardContent>
                             <FullCalendar
+                                headerToolbar={{
+                                    left: 'prev',
+                                    center: 'title',
+                                    right: 'next',
+                                }}
+                                views={{
+                                    timeGridMonth: {
+                                        duration: isMobile ? { days: 5 } : { days: 7 },
+                                    },
+                                }}
                                 plugins={[dayGridPlugin]}
                                 initialView='dayGridMonth'
                                 weekends={true}
                                 events={events}
                                 eventContent={renderEventContent}
                                 locale={plLocale}
+
                                 eventClick={handleEventClick}
                             />
                         </CardContent>
