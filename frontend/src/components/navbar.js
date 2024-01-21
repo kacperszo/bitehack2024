@@ -44,11 +44,11 @@ export default function Navbar() {
     }
 
     const menuItems = [
-        {path: "/knowledge-base", label: "Baza pomocy i wiedzy", icon: ""},
+        {path: "/knowledge-base", label: "Baza pomocy i wiedzy", icon: "Book.svg"},
         {path: "/journal", label: "Dziennik", icon: "Calendar.svg"},
         {path: "/feeling-journal", label: "Dziennik samopoczucia", icon: "Notebook.svg"},
         {path: "/my-group", label: "Moja grupa", icon: "Direct Hit.svg"},
-        {path: "/consultation", label: "Konsultacja", icon: ""},
+        {path: "/consultation", label: "Konsultacja", icon: "Camera.svg"},
         {path: "/sos", label: "SOS!", icon: "Warning.svg"},
     ]
 

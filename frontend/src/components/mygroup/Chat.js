@@ -42,7 +42,6 @@ export default function Chat() {
                 flexDirection: "column",
                 overflow: 'auto',
                 height: '100%',
-                bgcolor: "grey.200",
             }}
         >
             <Box sx={{flexGrow: 1, overflow: "auto", p: 2}}>

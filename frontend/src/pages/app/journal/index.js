@@ -132,7 +132,6 @@ export default function Journal() {
                         <Button variant="contained">Dodaj nowy wpis</Button>
                     </Stack>
 
-
                     <Card sx={{mt: 4, mb: 5}}>
                         <CardContent>
                             <FullCalendar

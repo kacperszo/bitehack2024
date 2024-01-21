@@ -8,7 +8,6 @@ const InfoCard = ({children, sx}) => {
     const theme = useTheme();
 
     return (<Box sx={{
-
         backgroundColor: "#EFFDF3", padding: 1.5, m: 3, borderRadius: 2, ...sx
     }}>
         {children}
