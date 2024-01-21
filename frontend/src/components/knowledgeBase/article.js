@@ -8,13 +8,13 @@ export default function Article({article, sx}) {
     const {image, title, author} = article
 
     return (<Box sx={{
-        backgroundColor: "#EFFDF3",
+        backgroundColor: { xs: "#EFFDF3", lg: "#D9EDDF" },
         borderRadius: '15px'
     }}>
         <Box sx={{
             position: 'relative',
-            width: 's',
-            height: '130px',
+            width: '250px',
+            height: '150px',
             ...sx
         }}>
             <Image src={`/articles/${image}`} alt={title} layout={'fill'} objectFit={'cover'}
