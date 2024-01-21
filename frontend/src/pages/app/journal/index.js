@@ -145,7 +145,6 @@ export default function Journal() {
                         <Button onClick={() => setIsNewDataModelOpen(true)} variant="contained">Dodaj nowy wpis</Button>
                     </Stack>
 
-
                     <Card sx={{mt: 4, mb: 5}}>
                         <CardContent>
                             <FullCalendar

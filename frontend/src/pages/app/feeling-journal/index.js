@@ -12,7 +12,6 @@ import {
     Typography, useMediaQuery, useTheme
 } from "@mui/material";
 import Navbar from "@/components/navbar";
-import Image from "next/image"
 import dayGridPlugin from '@fullcalendar/daygrid'
 import FullCalendar from "@fullcalendar/react";
 import plLocale from '@fullcalendar/core/locales/pl';
@@ -22,7 +21,7 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import React, {useState} from "react";
+import {useState} from "react";
 import Layout from "@/components/layout";
 
 export const matchWellbeingIcon = (type) => {
@@ -32,17 +31,17 @@ export const matchWellbeingIcon = (type) => {
 
     switch (type) {
         case 'very bad':
-            return <Image width={40} height={40} src={"/face1.png"}/>;
+            return <SentimentVeryDissatisfiedIcon style={{...iconStyle, color: 'darkred'}}/>;
         case 'bad':
-            return <Image width={40} height={40} src={"/face2.png"}/>;
+            return <SentimentDissatisfiedIcon style={{...iconStyle, color: 'red'}}/>;
         case 'neutral':
-            return <Image width={40} height={40} src={"/face3.png"}/>;
+            return <SentimentNeutralIcon style={{...iconStyle, color: 'gray'}}/>;
         case 'good':
-            return <Image width={40} height={40} src={"/face4.png"}/>;
+            return <SentimentSatisfiedIcon style={{...iconStyle, color: 'lightgreen'}}/>;
         case 'very good':
-            return <Image width={40} height={40} src={"/face5.png"}/>;
+            return <SentimentVerySatisfiedIcon style={{...iconStyle, color: 'green'}}/>;
         default:
-            return <Image width={40} height={40} src={"/face3.png"}/>;
+            return <SentimentNeutralIcon style={iconStyle}/>;
     }
 }
 
@@ -144,11 +143,11 @@ export default function FeelingJournal() {
     function renderEventContent(eventInfo) {
         return (
             <Box sx={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "center",
-                textAlign: "center",
-                alignItem: "center"
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
             }}>
                 {matchWellbeingIcon(eventInfo.event.title)}
             </Box>
@@ -174,8 +173,8 @@ export default function FeelingJournal() {
         <Layout>
             <Navbar/>
             <Dialog fullWidth maxWidth="sm" open={createOpen} onClose={handleDetailsClose}>
-                <DialogTitle sx={{backgroundColor: "white"}}>Jak się dzisiaj czujesz?</DialogTitle>
-                <DialogContent sx={{backgroundColor: "white"}}>
+                <DialogTitle>Jak się dzisiaj czujesz?</DialogTitle>
+                <DialogContent>
                     <Stack direction="row" spacing={1}>
                         <Box sx={{cursor: 'pointer'}}>
                             {matchWellbeingIcon('very bad')}
@@ -205,13 +204,13 @@ export default function FeelingJournal() {
                         />
                     </Stack>
                 </DialogContent>
-                <DialogActions sx={{backgroundColor: "white"}}>
+                <DialogActions>
                     <Button variant="outlined" onClick={handleDetailsClose}>Zamknij</Button>
                     <Button variant="contained" onClick={handleDetailsClose}>Zapisz</Button>
                 </DialogActions>
             </Dialog>
             <Dialog fullWidth maxWidth="xs" open={detailsOpen} onClose={handleDetailsClose}>
-                <DialogContent sx={{backgroundColor: "white"}}>
+                <DialogContent>
                     {matchWellbeingIcon(selectedEvent?.title)}
                     <Typography variant="body2">Ogólne samopoczucie: {selectedEvent?.extendedProps.desc1}</Typography>
                     <Typography variant="body2">Jakie były pozytywne
@@ -220,8 +219,7 @@ export default function FeelingJournal() {
                         rzeczy: {selectedEvent?.extendedProps.desc3}</Typography>
                 </DialogContent>
             </Dialog>
-            <Box
-                sx={{
+            <Box sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     backgroundSize: 'cover',
@@ -239,7 +237,6 @@ export default function FeelingJournal() {
                             <Button variant="contained" onClick={() => setCreateOpen(true)}>Dodaj</Button>
                         </Box>
                     </Stack>
-
 
                     <Card sx={{mt: 4, mb: 5}}>
                         <CardContent>

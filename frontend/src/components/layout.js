@@ -31,7 +31,7 @@ export default function Layout({children}) {
         {path: "/journal", label: "Dziennik", icon: "Calendar.svg"},
         {path: "/feeling-journal", label: "Dziennik samopoczucia", icon: "Notebook.svg"},
         {path: "/my-group", label: "Moja grupa", icon: "Direct Hit.svg"},
-        {path: "/consultation", label: "Konsultacja", icon: "Konsultacje.svg"},
+        {path: "/consultation", label: "Konsultacja", icon: "Camera.svg"},
         {path: "/sos", label: "SOS!", icon: "Warning.svg"},
     ]
 
@@ -103,7 +103,8 @@ export default function Layout({children}) {
                 </Box>
             </Box>
             <Box sx={{
-                display: {xs: 'block', lg: 'none'}
+                display: {xs: 'block', lg: 'none'},
+                backgroundColor: theme.palette.primary.light
             }}>
                 {children}
             </Box>

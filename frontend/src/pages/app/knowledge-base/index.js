@@ -1,43 +1,167 @@
 import {Box, Grid, Stack, Tab, Tabs, Typography, useTheme} from "@mui/material";
-import Navbar from "@/components/navbar";
-import KnowledgeTab from "@/components/knowledgeBase/knowledgeTab";
-import {useState} from "react";
 import * as React from "react";
+import Image from "next/image";
+import Navbar from "@/components/navbar";
 import Layout from "@/components/layout";
+import Article from "@/components/knowledgeBase/article";
 
 export default function KnowledgeBasePage() {
     const theme = useTheme();
 
-    return (
-        <>
-            <Hero>
-                <Typography sx={{marginTop: "1rem", display: "block"}} color={theme.palette.primary.dark}
-                            variant={"h3"}>Zmień
-                    swoje życie i</Typography>
-                <Typography sx={{marginTop: "1rem", display: "block"}} color={theme.palette.primary.dark}
-                            variant={"h5"}>zacznij
-                    żyć odNowa</Typography>
-            </Hero>
+    const InfoCard = ({children, sx}) => {
+        const theme = useTheme();
 
-        </>
-    )
-}
+        return (<Box sx={{
+            backgroundColor: "#EFFDF3", padding: 1.5, m: 1, borderRadius: 2, ...sx
+        }}>
+            {children}
+        </Box>)
+    }
 
-const Hero = ({children}) => {
+    const tags = ['Profilaktyka', 'Inspiracja', 'Zdrowie psychiczne']
+
+    const popularArticles = [
+        {title: 'Czym są endorfiny?', author: 'Katarzyna Kowalska', image: "article1.png"},
+        {title: 'Jak przestać się martwić?', author: 'Jan Nowak', image: "article2.png"},
+    ]
+
     return (
         <Layout>
             <Navbar/>
             <Box sx={{
-                pt: 10,
-                pb: 10,
-                display: "flex",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
+                padding: 2
             }}>
-                {children}
+                <InfoCard>
+                    <Box>
+                        <Typography fontWeight={600} variant={"h6"} sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontSize: '1.5rem'
+                        }}>
+                            <Image
+                                style={{paddingLeft: 10, paddingRight: 10,}}
+                                src={"/icons/Book.svg"} width={30} height={30}
+                                alt={"Book"}/>
+                            Baza Wiedzy
+                        </Typography>
+                    </Box>
+                </InfoCard>
+                <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexWrap: 'nowrap',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    marginTop: 2
+                }}>
+                    {tags.map((tag, index) => {
+                        return (
+                            <Box key={index} sx={{
+                                backgroundColor: "#EFFDF3", px: 1.5, py: 1, m: 1, borderRadius: 2
+                            }}>
+                                <Typography fontWeight={600} variant={"h6"} sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    fontSize: '1rem',
+                                }}>
+                                    {tag}
+                                </Typography>
+                            </Box>
+                        )
+                    })}
+                </Box>
+                <Box sx={{
+                    marginLeft: 1,
+                    marginTop: 2
+                }}>
+                    <Typography
+                        sx={{color: '#2B5B30', fontWeight: 'bold', fontSize: '1.25rem', my: 1}}>Popularne</Typography>
+                    <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexWrap: 'nowrap',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        gap: 2
+                    }}>
+                        {popularArticles.map((article, index) => {
+                            return <Article article={article}/>
+                        })}
+                    </Box>
+                </Box>
+                <Box sx={{
+                    m: 1
+                }}>
+                    <Typography
+                        sx={{color: '#2B5B30', fontWeight: 'bold', fontSize: '1.25rem', my: 1}}>Najnowsze</Typography>
+                    <Box sx={{
+                        backgroundColor: "#EFFDF3", borderRadius: 2
+                    }}>
+                        <Box sx={{
+                            backgroundColor: "#EFFDF3",
+                            borderRadius: '15px'
+                        }}>
+                            <Box sx={{
+                                position: 'relative',
+                                width: '100%',
+                                height: '30vw',
+                            }}>
+                                <Image src={`/articles/article3.png`} alt={'Spokój - jak go osiągnąć'} layout={'fill'} objectFit={'cover'}
+                                       style={{borderRadius: '15px 15px 0 0'}}/>
+                            </Box>
+                            <Box>
+                                <Typography sx={{color: '#00350D', fontFamily: 'Poppins', fontWeight: 'bold', p: 1, pb: 0}}>{'Spokój - jak go osiągnąć'}</Typography>
+                                <Typography sx={{fontFamily: 'Poppins', fontSize: '0.75rem', p: 1, pt: 0}}>{'Niektóre rzeczy w życiu są poza Twoją kontrolą. Zamiast się nimi martwić, spróbuj je zaakceptować i skupić się na tym, co możesz zmienić.'}</Typography>
+                                <Typography sx={{color: '#2B5B30', fontFamily: 'Poppins', p: 1, pt: 0}}>{'Anna wiśniowska'}</Typography>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
+                <Typography
+                    sx={{
+                        color: '#2B5B30',
+                        textAlign: 'center',
+                        fontWeight: 'bold',
+                        my: 2,
+                        textDecoration: 'underline'
+                    }}>Zobacz Więcej</Typography>
+                <InfoCard>
+                    <Box>
+                        <Typography fontWeight={600} variant={"h6"} sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontSize: '1.5rem'
+                        }}>
+                            <Image
+                                style={{paddingLeft: 10, paddingRight: 10,}}
+                                src={"/icons/page.svg"} width={30} height={30}
+                                alt={"Chat"}/>
+                            Chat
+                        </Typography>
+                    </Box>
+                </InfoCard>
+                <Box sx={{
+                    backgroundColor: "#EFFDF3", px: 1.5, py: 1, pt: 3, m: 1, mt: 3, borderRadius: 2
+                }}>
+                    <Typography sx={{
+                        textAlign: 'center',
+                        fontSize: '1.3rem',
+                        fontWeight: 'bold',
+                        fontFamily: 'Poppins'
+                    }}>Maks</Typography>
+                    <Box sx={{position: 'relative', width: '100%', height: '30vw', my: 3}}><Image
+                        src={'/articles/article4.png'} alt={'Maks'} layout={'fill'} objectFit={'cover'}/></Box>
+                    <Typography sx={{fontFamily: 'Poppins', textAlign: 'center', fontSize: '0.85rem', pb: 4}}>Jeśli masz
+                        jakieś pytania na które nie znalazłeś odpowiedzi w artykułach służę pomocą</Typography>
+                    <input style={{
+                        width: '92%',
+                        borderRadius: '10px',
+                        border: '1px solid #00350D',
+                        backgroundColor: 'transparent',
+                        padding: '10px',
+                        marginBottom: '5px'
+                    }} type={'text'} placeholder={'Zadaj pytanie'}/>
+                </Box>
             </Box>
         </Layout>
     )
