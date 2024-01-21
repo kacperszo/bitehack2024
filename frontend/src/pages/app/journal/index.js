@@ -17,6 +17,9 @@ export const getIcon = () => {
 }
 
 export default function Journal() {
+
+    const [isNewDataModelOpen, setIsNewDataModelOpen] = useState(false)
+
     const events = [
         {
             start: new Date('2024-01-09'),
@@ -109,8 +112,13 @@ export default function Journal() {
     return (
         <Layout>
             <Navbar/>
+            <Dialog open={isNewDataModelOpen} onClose={() => setIsNewDataModelOpen(false)}>
+                <DialogContent sx={{backgroundColor: "white"}}>
+                    asdasd
+                </DialogContent>
+            </Dialog>
             <Dialog open={detailsOpen} onClose={handleDetailsClose}>
-                <DialogContent>
+                <DialogContent sx={{backgroundColor: "white"}}>
                     {selectedEvent?.title}-{selectedEvent?.extendedProps.howMuch}
                 </DialogContent>
             </Dialog>
@@ -129,7 +137,7 @@ export default function Journal() {
                                 Dziennik
                             </Typography>
                         </Box>
-                        <Button variant="contained">Dodaj nowy wpis</Button>
+                        <Button onClick={() => setIsNewDataModelOpen(true)} variant="contained">Dodaj nowy wpis</Button>
                     </Stack>
 
 

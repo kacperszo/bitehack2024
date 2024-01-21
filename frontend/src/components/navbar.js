@@ -44,11 +44,11 @@ export default function Navbar() {
     }
 
     const menuItems = [
-        {path: "/knowledge-base", label: "Baza pomocy i wiedzy", icon: ""},
+        {path: "/knowledge-base", label: "Baza pomocy i wiedzy", icon: "Book.svg"},
         {path: "/journal", label: "Dziennik", icon: "Calendar.svg"},
         {path: "/feeling-journal", label: "Dziennik samopoczucia", icon: "Notebook.svg"},
         {path: "/my-group", label: "Moja grupa", icon: "Direct Hit.svg"},
-        {path: "/consultation", label: "Konsultacja", icon: ""},
+        {path: "/consultation", label: "Konsultacja", icon: "Konsultacje.svg"},
         {path: "/sos", label: "SOS!", icon: "Warning.svg"},
     ]
 
@@ -104,7 +104,7 @@ export default function Navbar() {
     );
 
     return (<>
-        <AppBar position="static" color={"transparent"} sx={{ display: {xs: 'flex', lg: 'none'}, boxShadow: 'none'}}>
+        <AppBar position="static" color={"transparent"} sx={{display: {xs: 'flex', lg: 'none'}, boxShadow: 'none'}}>
             <Toolbar>
                 <Image alt="logo" src={'/logo.png'} width={75} height={75}/>
                 <Box sx={{flexGrow: 1}}/>
