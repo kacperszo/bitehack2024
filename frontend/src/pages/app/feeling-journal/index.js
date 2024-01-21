@@ -9,7 +9,7 @@ import {
     DialogTitle,
     Stack,
     TextField,
-    Typography
+    Typography, useMediaQuery, useTheme
 } from "@mui/material";
 import Navbar from "@/components/navbar";
 import Image from "next/image"
@@ -47,6 +47,13 @@ export const matchWellbeingIcon = (type) => {
 }
 
 export default function FeelingJournal() {
+
+    const theme = useTheme();
+
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"), {
+        noSsr: false
+    });
+
     const events = [
         {
             title: 'good',
@@ -237,12 +244,23 @@ export default function FeelingJournal() {
                     <Card sx={{mt: 4, mb: 5}}>
                         <CardContent>
                             <FullCalendar
+                                headerToolbar={{
+                                    left: 'prev',
+                                    center: 'title',
+                                    right: 'next',
+                                }}
+                                views={{
+                                    timeGridMonth: {
+                                        duration: isMobile ? { days: 5 } : { days: 7 },
+                                    },
+                                }}
                                 plugins={[dayGridPlugin]}
                                 initialView='dayGridMonth'
                                 weekends={true}
                                 events={events}
                                 eventContent={renderEventContent}
                                 locale={plLocale}
+
                                 eventClick={handleEventClick}
                             />
                         </CardContent>
