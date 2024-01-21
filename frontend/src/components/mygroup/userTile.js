@@ -11,7 +11,8 @@ export default function UserTile({user}) {
             width: '100px',
             alignItems: 'center',
             justifyContent: 'flex-start',
-            gap: 1
+            gap: 1,
+            py: 2
         }}>
             <Box sx={{
                 position: 'relative',
@@ -47,12 +48,12 @@ export default function UserTile({user}) {
                         },
                     }}
                 >
-                    <Avatar sx={{ bgcolor: color }}>
+                    <Avatar sx={{ bgcolor: color, width: '60px', height: '60px', color: 'white' }}>
                         {displayName.split(' ')[0][0]}
                     </Avatar>
                 </Badge>
             </Box>
-            <Typography paragraph={true} sx={{ textAlign: 'center', marginBottom: '0px' }}>{displayName}</Typography>
+            <Typography paragraph={true} sx={{ textAlign: 'center', marginBottom: '0px', color: '#00350D' }}>{displayName}</Typography>
         </Box>
     )
 }
